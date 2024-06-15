@@ -11,12 +11,12 @@ int main()
     // Define a green circle
     sf::CircleShape circle(50); // Radius of 50 pixels
     circle.setFillColor(sf::Color::Green);
-    circle.setPosition(100, 200); // Position on the window
+    circle.setPosition(100, 250); // Position on the window
 
     // Define a red square
     sf::RectangleShape square(sf::Vector2f(100, 100)); // Size 100x100 pixels
     square.setFillColor(sf::Color::Red);
-    square.setPosition(350, 200); // Position on the window
+    square.setPosition(350, 250); // Position on the window
 
     // Define a blue triangle
     sf::ConvexShape triangle;
@@ -25,7 +25,23 @@ int main()
     triangle.setPoint(1, sf::Vector2f(100, 0));
     triangle.setPoint(2, sf::Vector2f(50, 100));
     triangle.setFillColor(sf::Color::Blue);
-    triangle.setPosition(600, 200); // Position on the window
+    triangle.setPosition(600, 250); // Position on the window
+
+    // Create Image Texture and sprite
+    sf::Texture outscal_texture;
+    outscal_texture.loadFromFile("assets/textures/outscal_logo.png");
+    sf::Sprite outscal_sprite;
+    outscal_sprite.setTexture(outscal_texture);
+    outscal_sprite.setPosition(350, 0); // Position
+    outscal_sprite.setRotation(45); // Rotation in degrees
+    outscal_sprite.setScale(0.4, 0.4); // Scale factor
+
+    // Create Text
+    sf::Font font;
+    font.loadFromFile("assets/fonts/OpenSans.ttf");
+    sf::Text text("SFML is Awesome!!", font, 50);
+    text.setPosition(200, 500); // Position
+    text.setFillColor(sf::Color::White);
 
     // Main loop to display the window and shapes
     while (window.isOpen()) {
@@ -43,6 +59,12 @@ int main()
         window.draw(circle);
         window.draw(square);
         window.draw(triangle);
+
+        // Draw the sprite
+        window.draw(outscal_sprite);
+
+        // Draw the text
+        window.draw(text);
 
         // Render whatever is drawn
         window.display();
