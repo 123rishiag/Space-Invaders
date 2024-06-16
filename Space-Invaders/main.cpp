@@ -61,9 +61,7 @@ int main()
     sf::RenderWindow window(videoMode, "SFML Window");
 
     // Create a Player object
-    Player player;
-
-    Player player2(5, 3);
+    Player player(5, 2);
 
     player.playerTexture.loadFromFile("assets/textures/player_ship.png"); // Load the player ship texture
 
