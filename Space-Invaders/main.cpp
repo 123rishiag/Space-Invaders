@@ -1,4 +1,30 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
+
+class Player {
+private:
+    int playerScore = 0;
+    int health = 3;
+    int movementSpeed = 10;
+    sf::Vector2f position = sf::Vector2f(100.0f, 100.0f);
+
+public:
+    sf::Texture playerTexture;
+    sf::Sprite playerSprite;
+    
+    // Public Getter & Setter methods
+    int GetScore() const {
+        return playerScore;
+    }
+    void SetScore(int newScore) {
+        playerScore = newScore;
+    }
+
+    // Other methods
+    void TakeDamage() {};
+    void Move() {};
+    void ShootBullets() {};
+};
 
 int main()
 {
@@ -6,42 +32,7 @@ int main()
     sf::VideoMode videoMode = sf::VideoMode(800, 600);
 
     // Create a window object with specific dimensions and a title
-    sf::RenderWindow window(videoMode, "SFML Shapes");
-
-    // Define a green circle
-    sf::CircleShape circle(50); // Radius of 50 pixels
-    circle.setFillColor(sf::Color::Green);
-    circle.setPosition(100, 250); // Position on the window
-
-    // Define a red square
-    sf::RectangleShape square(sf::Vector2f(100, 100)); // Size 100x100 pixels
-    square.setFillColor(sf::Color::Red);
-    square.setPosition(350, 250); // Position on the window
-
-    // Define a blue triangle
-    sf::ConvexShape triangle;
-    triangle.setPointCount(3);
-    triangle.setPoint(0, sf::Vector2f(0, 0));
-    triangle.setPoint(1, sf::Vector2f(100, 0));
-    triangle.setPoint(2, sf::Vector2f(50, 100));
-    triangle.setFillColor(sf::Color::Blue);
-    triangle.setPosition(600, 250); // Position on the window
-
-    // Create Image Texture and sprite
-    sf::Texture outscal_texture;
-    outscal_texture.loadFromFile("assets/textures/outscal_logo.png");
-    sf::Sprite outscal_sprite;
-    outscal_sprite.setTexture(outscal_texture);
-    outscal_sprite.setPosition(350, 0); // Position
-    outscal_sprite.setRotation(45); // Rotation in degrees
-    outscal_sprite.setScale(0.4, 0.4); // Scale factor
-
-    // Create Text
-    sf::Font font;
-    font.loadFromFile("assets/fonts/OpenSans.ttf");
-    sf::Text text("SFML is Awesome!!", font, 50);
-    text.setPosition(200, 500); // Position
-    text.setFillColor(sf::Color::White);
+    sf::RenderWindow window(videoMode, "SFML Window");
 
     // Main loop to display the window and shapes
     while (window.isOpen()) {
@@ -53,22 +44,23 @@ int main()
         }
 
         // Clear the window
-        window.clear(sf::Color::Black);
-
-        // Draw the shapes
-        window.draw(circle);
-        window.draw(square);
-        window.draw(triangle);
-
-        // Draw the sprite
-        window.draw(outscal_sprite);
-
-        // Draw the text
-        window.draw(text);
+        window.clear(sf::Color::Blue);
 
         // Render whatever is drawn
         window.display();
     }
+
+    // Create a Player object
+    Player player;
+
+    // Access the private variable using the public getter
+    std::cout << "Player Score: " << player.GetScore() << "\n";
+
+    // Modify the variable using the public setter
+    player.SetScore(100);
+
+    // Access the modified variable using the public getter
+    std::cout << "Player Modified Score: " << player.GetScore() << "\n";
 
     return 0;
 }
