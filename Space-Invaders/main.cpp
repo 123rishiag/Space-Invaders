@@ -1,14 +1,30 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+using namespace std;
+
 class Player {
 private:
-    int playerScore = 0;
     int playerHealth = 3;
     int playerSpeed = 2;
     sf::Vector2f playerPosition = sf::Vector2f(100.0f, 500.0f);
+    int playerScore = 0;
 
 public:
+    Player() {
+        cout << "Default Constructor called for Player!\n";
+    };
+
+    Player(int initialHealth, int speed) {
+        playerHealth = initialHealth;
+        playerSpeed = speed;
+
+        cout << "Player Object is created using custom constructor with Initial Health: " << initialHealth << " and Speed: " << speed << ".\n";
+    }
+    ~Player() { 
+        cout << "Player Object with Speed " << playerSpeed << " is getting destroyed.\n";
+    }
+
     sf::Texture playerTexture;
     sf::Sprite playerSprite;
     
@@ -46,6 +62,8 @@ int main()
 
     // Create a Player object
     Player player;
+
+    Player player2(5, 3);
 
     player.playerTexture.loadFromFile("assets/textures/player_ship.png"); // Load the player ship texture
 
