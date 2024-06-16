@@ -4,9 +4,9 @@
 class Player {
 private:
     int playerScore = 0;
-    int health = 3;
-    int movementSpeed = 10;
-    sf::Vector2f position = sf::Vector2f(100.0f, 100.0f);
+    int playerHealth = 3;
+    int playerSpeed = 10;
+    sf::Vector2f playerPosition = sf::Vector2f(100.0f, 100.0f);
 
 public:
     sf::Texture playerTexture;
@@ -18,6 +18,10 @@ public:
     }
     void SetScore(int newScore) {
         playerScore = newScore;
+    }
+
+    sf::Vector2f GetPosition() const {
+        return playerPosition;
     }
 
     // Other methods
@@ -34,6 +38,13 @@ int main()
     // Create a window object with specific dimensions and a title
     sf::RenderWindow window(videoMode, "SFML Window");
 
+    // Create a Player object
+    Player player;
+
+    player.playerTexture.loadFromFile("assets/textures/player_ship.png"); // Load the player ship texture
+
+    player.playerSprite.setTexture(player.playerTexture);  // Set the player sprite variable 
+
     // Main loop to display the window and shapes
     while (window.isOpen()) {
         sf::Event event;
@@ -43,24 +54,24 @@ int main()
                 window.close();
         }
 
+        // Handle keyboard input
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            player.Move();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            player.Move();
+        }
+
         // Clear the window
         window.clear(sf::Color::Blue);
+
+        player.playerSprite.setPosition(player.GetPosition()); // Set the position of the player sprite
+
+        window.draw(player.playerSprite);    // Draw the player sprite
 
         // Render whatever is drawn
         window.display();
     }
-
-    // Create a Player object
-    Player player;
-
-    // Access the private variable using the public getter
-    std::cout << "Player Score: " << player.GetScore() << "\n";
-
-    // Modify the variable using the public setter
-    player.SetScore(100);
-
-    // Access the modified variable using the public getter
-    std::cout << "Player Modified Score: " << player.GetScore() << "\n";
 
     return 0;
 }
