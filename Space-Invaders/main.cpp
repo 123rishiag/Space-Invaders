@@ -5,8 +5,8 @@ class Player {
 private:
     int playerScore = 0;
     int playerHealth = 3;
-    int playerSpeed = 10;
-    sf::Vector2f playerPosition = sf::Vector2f(100.0f, 100.0f);
+    int playerSpeed = 2;
+    sf::Vector2f playerPosition = sf::Vector2f(100.0f, 500.0f);
 
 public:
     sf::Texture playerTexture;
@@ -20,13 +20,19 @@ public:
         playerScore = newScore;
     }
 
+    int GetSpeed() const {
+        return playerSpeed;
+    }
+
     sf::Vector2f GetPosition() const {
         return playerPosition;
     }
 
     // Other methods
     void TakeDamage() {};
-    void Move() {};
+    void Move(float offsetX) {
+        playerPosition.x += offsetX;
+    };
     void ShootBullets() {};
 };
 
@@ -56,10 +62,10 @@ int main()
 
         // Handle keyboard input
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            player.Move();
+            player.Move(-1.0 * player.GetSpeed());
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            player.Move();
+            player.Move(1.0 * player.GetSpeed());
         }
 
         // Clear the window
