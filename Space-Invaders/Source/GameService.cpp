@@ -1,42 +1,60 @@
 #include "../Header/GameService.h"
+#include "../Header/GraphicService.h"
 
 void GameService::Initialize()
 {
-	// Handles game initialization.
+	serviceLocator->Initialize();
+	InitializeVariables();
+}
+
+void GameService::InitializeVariables()
+{
+	gameWindow = serviceLocator->GetGraphicService()->GetGameWindow(); //set game window (it was null before this)
 }
 
 void GameService::Destroy()
 {
-	// Handles cleanup tasks.
+	delete(gameWindow);
+	//delete(serviceLocator);
 }
 
 GameService::GameService()
 {
-	// Constructor for initializing the GameService object.
+	serviceLocator = nullptr; // Set service locator to null
+	gameWindow = nullptr; // Set game window to null
 }
 
 GameService::~GameService()
 {
-	// Destructor for cleaning up resources upon object deletion.
+	Destroy(); // Clean up and release resources
 }
 
 void GameService::Ignite()
 {
-	// Initiates the game.
+	serviceLocator = ServiceLocator::GetInstance(); // Get ServiceLocator
+	Initialize(); // Initialize services.
 }
 
 void GameService::Update()
 {
-	// Updates the game logic and game state.
+	serviceLocator->Update(); // Call update on the service locator which then updates all its managed services
 }
 
 void GameService::Render()
 {
-	// Renders each frame of the game.
+	// Clears the game window with the background color provided by the graphic service
+	gameWindow->clear(serviceLocator->GetGraphicService()->GetWindowColor());
+	serviceLocator->Render(); // Render the current frame using the service locator
+	gameWindow->display(); // Display the rendered frame on the game window
 }
 
 bool GameService::IsRunning()
 {
-	// Checks if the game is currently running.
-	return false; //default return
+	// Returns true if the game window is open, indicating the game is still running
+	return serviceLocator->GetGraphicService()->IsGameWindowOpen();
+}
+
+sf::RenderWindow* GameService::GetGameWindow()
+{
+	return gameWindow;
 }
