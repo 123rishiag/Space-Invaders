@@ -1,8 +1,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Header/GameService.h"
+
 using namespace std;
 
+/*
 class Player {
 private:
     int playerHealth = 3;
@@ -52,8 +55,11 @@ public:
     void ShootBullets() {};
 };
 
+*/
+
 int main()
 {
+    /*
     // Define the video mode (dimensions)
     sf::VideoMode videoMode = sf::VideoMode(800, 600);
 
@@ -93,6 +99,16 @@ int main()
 
         // Render whatever is drawn
         window.display();
+    }
+    */
+
+    GameService gameService;
+
+    gameService.Ignite();
+
+    while (gameService.IsRunning()) {
+        gameService.Update();
+        gameService.Render();
     }
 
     return 0;
