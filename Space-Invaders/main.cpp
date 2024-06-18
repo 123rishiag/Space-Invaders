@@ -107,12 +107,6 @@ int main()
 
     while (gameService->IsRunning())
     {
-        // Handle events
-        sf::Event event;
-        while (gameService->GetGameWindow()->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                gameService->GetGameWindow()->close();
-        }
         gameService->Update();
         gameService->Render();
     }
