@@ -1,5 +1,4 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
 #include "Header/GameService.h"
 
@@ -102,13 +101,20 @@ int main()
     }
     */
 
-    GameService gameService;
+    GameService* gameService = new GameService();
 
-    gameService.Ignite();
+    gameService->Ignite();
 
-    while (gameService.IsRunning()) {
-        gameService.Update();
-        gameService.Render();
+    while (gameService->IsRunning())
+    {
+        // Handle events
+        sf::Event event;
+        while (gameService->GetGameWindow()->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                gameService->GetGameWindow()->close();
+        }
+        gameService->Update();
+        gameService->Render();
     }
 
     return 0;

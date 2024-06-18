@@ -4,51 +4,47 @@
 // #include "EventService.h"
 // #include "GraphicService.h"
 
-// Initialize the static instance pointer
-ServiceLocator* ServiceLocator::instance = nullptr;
-
 // Constructor for initializing the ServiceLocator.
 ServiceLocator::ServiceLocator() {
-    // Constructor implementation
-    // Initialize member variables and resources
+    graphicService = nullptr; // Initialize graphicService to null
+    CreateServices(); // Call CreateServices to instantiate services
 }
 
 // Destructor for cleaning up resources upon object deletion.
 ServiceLocator::~ServiceLocator() {
-    // Destructor implementation
-    // Clean up and release resources
+    ClearAllServices(); // Call ClearAllServices to delete any allocated services	
 }
 
 // Creates instances of all services.
 void ServiceLocator::CreateServices() {
-    // Create instances of all services
+    graphicService = new GraphicService(); // Dynamically create a GraphicService instance
 }
 
 // Deletes and deallocates memory for all services.
 void ServiceLocator::ClearAllServices() {
-    // Delete and deallocate memory for all services
+    delete(graphicService); // Delete the graphicService instance
+    graphicService = nullptr; // Reset pointer to null to avoid dangling pointer
 }
 
 // Provides a method to access the unique ServiceLocator instance (object).
 ServiceLocator* ServiceLocator::GetInstance() {
-    // If no instance exists, create one
-    return instance;
+    static ServiceLocator instance; // we will discuss what 'static' means at a later time.
+    return &instance; // Return address of the instance
 }
 
 // Initializes the ServiceLocator.
 void ServiceLocator::Initialize() {
-    // Initialize the ServiceLocator
-    // Perform any necessary initialization steps
+    graphicService->Initialize(); // Initialize graphic service
 }
 
 // Updates all services.
 void ServiceLocator::Update() {
-    // Update all services
+    graphicService->Update(); // Update graphic service
 }
 
 // Renders using the services.
 void ServiceLocator::Render() {
-    // Render using the services
+    graphicService->Render(); // Render graphic service
 }
 
 // Methods to Get Specific Services:
@@ -59,6 +55,6 @@ void ServiceLocator::Render() {
 // }
 
 // Retrieve the GraphicService instance
-// GraphicService* ServiceLocator::GetGraphicService() {
-//     return graphicService;
-// }
+GraphicService* ServiceLocator::GetGraphicService() {
+    return graphicService;
+}
