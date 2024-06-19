@@ -40,16 +40,16 @@ void GraphicService::Update() { }
 void GraphicService::Render() { }
 
 // Checks if the game window is currently open.
-bool GraphicService::IsGameWindowOpen() {
+bool GraphicService::IsGameWindowOpen() const {
 	return gameWindow->isOpen(); // Returns the open status of the game window
 }
 
 // Returns a pointer to the game window object.
-sf::RenderWindow* GraphicService::GetGameWindow() {
+sf::RenderWindow* GraphicService::GetGameWindow() const {
 	return gameWindow;
 }
 
 // Returns the configured window background color.
-sf::Color GraphicService::GetWindowColor() {
+sf::Color GraphicService::GetWindowColor() const {
 	return windowColor;
 }

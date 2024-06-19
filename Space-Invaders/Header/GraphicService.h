@@ -30,8 +30,8 @@ public:
 	void Initialize(); //lifecycle functions
 	void Update(); //..
 	void Render(); //..
-	bool IsGameWindowOpen(); //check if the window is open
+	bool IsGameWindowOpen() const; //check if the window is open
 
-	sf::RenderWindow* GetGameWindow(); //getter for the game window instance
-	sf::Color GetWindowColor();//get the color
+	sf::RenderWindow* GetGameWindow() const; //getter for the game window instance
+	sf::Color GetWindowColor() const;//get the color
 };

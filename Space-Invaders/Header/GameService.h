@@ -20,8 +20,8 @@ public:
 	void Ignite();			// Initiates the game.
 	void Update();			// Updates the game logic and game state.
 	void Render();			// Renders each frame of the game.
-	bool IsRunning();		// Checks if the game is currently running.
+	bool IsRunning() const;		// Checks if the game is currently running.
 
-	sf::RenderWindow* GetGameWindow(); // Getter for the game window instance
+	sf::RenderWindow* GetGameWindow() const; // Getter for the game window instance
 
 };
