@@ -1,5 +1,15 @@
 #include "../Header/GameService.h"
-#include "../Header/GraphicService.h"
+
+GameService::GameService()
+{
+	serviceLocator = nullptr; // Set service locator to null
+	gameWindow = nullptr; // Set game window to null
+}
+
+GameService::~GameService()
+{
+	Destroy(); // Clean up and release resources
+}
 
 void GameService::Initialize()
 {
@@ -15,18 +25,6 @@ void GameService::InitializeVariables()
 void GameService::Destroy()
 {
 	delete(gameWindow);
-	//delete(serviceLocator);
-}
-
-GameService::GameService()
-{
-	serviceLocator = nullptr; // Set service locator to null
-	gameWindow = nullptr; // Set game window to null
-}
-
-GameService::~GameService()
-{
-	Destroy(); // Clean up and release resources
 }
 
 void GameService::Ignite()
@@ -48,13 +46,13 @@ void GameService::Render()
 	gameWindow->display(); // Display the rendered frame on the game window
 }
 
-bool GameService::IsRunning()
+bool GameService::IsRunning() const
 {
 	// Returns true if the game window is open, indicating the game is still running
 	return serviceLocator->GetGraphicService()->IsGameWindowOpen();
 }
 
-sf::RenderWindow* GameService::GetGameWindow()
+sf::RenderWindow* GameService::GetGameWindow() const
 {
 	return gameWindow;
 }
