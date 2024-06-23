@@ -9,6 +9,7 @@ ServiceLocator::ServiceLocator() {
     graphicService = nullptr; // Initialize graphicService to null
     eventService = nullptr; // Initialize eventService to null
     playerService = nullptr; // Initialize playerService to null
+    timeService = nullptr; // Initialize timeService to null
     CreateServices(); // Call CreateServices to instantiate services
 }
 
@@ -22,6 +23,7 @@ void ServiceLocator::CreateServices() {
     graphicService = new GraphicService(); // Dynamically create a GraphicService instance
     eventService = new EventService(); // Dynamically create a EventService instance
     playerService = new PlayerService(); // Dynamically create a PlayerService instance
+    timeService = new TimeService(); // Dynamically create a TimeService instance
 }
 
 // Deletes and deallocates memory for all services.
@@ -29,6 +31,7 @@ void ServiceLocator::ClearAllServices() {
     delete(graphicService); // Delete the graphicService instance
     delete(eventService); // Delete the eventService instance
     delete(playerService); // Delete the playerService instance
+    delete(timeService); // Delete the timeService instance
 }
 
 // Provides a method to access the unique ServiceLocator instance (object).
@@ -42,6 +45,7 @@ void ServiceLocator::Initialize() {
     graphicService->Initialize(); // Initialize graphic service
     eventService->Initialize(); // Initialize event service
     playerService->Initialize(); // Initialize player service
+    timeService->Initialize(); // Initialize time service
 }
 
 // Updates all services.
@@ -49,6 +53,7 @@ void ServiceLocator::Update() {
     graphicService->Update(); // Update graphic service
     eventService->Update(); // Update event service
     playerService->Update(); // Update player service
+    timeService->Update(); // Update time service
 }
 
 // Renders using the services.
@@ -56,6 +61,7 @@ void ServiceLocator::Render() {
     graphicService->Render(); // Render graphic service
     // no event service because nothing to render
     playerService->Render(); // Render player service
+    // no time service because nothing to render
 }
 
 // Methods to Get Specific Services:
@@ -71,4 +77,8 @@ EventService* ServiceLocator::GetEventService() const {
 // Retrieve the PlayerService instance
 PlayerService* ServiceLocator::GetPlayerService() const {
     return playerService;
+}
+// Retrieve the TimeService instance
+TimeService* ServiceLocator::GetTimeService() const {
+    return timeService;
 }

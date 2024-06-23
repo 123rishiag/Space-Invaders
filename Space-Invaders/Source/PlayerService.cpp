@@ -36,12 +36,12 @@ void PlayerService::ProcessPlayerInput()
 	{
 		if (eventService->PressedLeftKey())
 		{
-			Move(-1.0f * GetMoveSpeed());
+			MoveLeft();
 		}
 
 		if (eventService->PressedRightKey())
 		{
-			Move(1.0f * GetMoveSpeed());
+			MoveRight();
 		}
 	}
 }
@@ -54,8 +54,11 @@ void PlayerService::InitializePlayerSprite()
 	}
 }
 
-void PlayerService::Move(float offsetX) {
-	position.x += offsetX;
+void PlayerService::MoveLeft() {
+	position.x -= movementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+}
+void PlayerService::MoveRight() {
+	position.x += movementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 }
 
 //helper functions

@@ -14,6 +14,7 @@ GraphicService::~GraphicService() {
 // Initializes the graphic service by creating a new game window.
 void GraphicService::Initialize() {
 	gameWindow = CreateGameWindow(); // Assigns a new game window to the game_window pointer
+	gameWindow->setFramerateLimit(frameRate);
 }
 
 // Creates a new SFML RenderWindow object with specified video mode and title.
