@@ -2,6 +2,7 @@
 
 #include "GraphicService.h"
 #include "EventService.h"
+#include "PlayerService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 // include relevant headers files
@@ -12,6 +13,7 @@ private:
     // Private Attributes:
     GraphicService* graphicService;
     EventService* eventService;
+    PlayerService* playerService;
     // ..........................
     // ..........................
 
@@ -39,5 +41,7 @@ public:
     // Methods to Get Specific Services: 
     GraphicService* GetGraphicService() const;   // Retrieve the GraphicService instance
     EventService* GetEventService() const;   // Retrieve the EventService instance
+    PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
+
 
 };
