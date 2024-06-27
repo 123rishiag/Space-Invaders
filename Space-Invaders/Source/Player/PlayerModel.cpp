@@ -13,34 +13,16 @@ void PlayerModel::Reset()
 	playerScore = 0;
 }
 
-sf::Vector2f PlayerModel::GetPlayerPosition()
-{
-	return playerPosition;
-}
+sf::Vector2f PlayerModel::GetPlayerPosition() const { return playerPosition; }
 
-void PlayerModel::SetPlayerPosition(sf::Vector2f position)
-{
-	playerPosition = position;
-}
+void PlayerModel::SetPlayerPosition(sf::Vector2f position) { playerPosition = position; }
 
-int PlayerModel::GetPlayerScore() const
-{
-	return playerScore;
-}
+int PlayerModel::GetPlayerScore() const { return playerScore; }
 
-void PlayerModel::SetPlayerScore(int score)
-{
-	playerScore = score;
-}
+void PlayerModel::SetPlayerScore(int score) { playerScore = score; }
 
 float PlayerModel::GetPlayerMoveSpeed() const { return playerMovementSpeed; }
 
-PlayerState PlayerModel::GetPlayerState()
-{
-	return playerState;
-}
+PlayerState PlayerModel::GetPlayerState() const { return playerState; }
 
-void PlayerModel::SetPlayerState(PlayerState state)
-{
-	playerState = state;
-}
+void PlayerModel::SetPlayerState(PlayerState state) { playerState = state; }
