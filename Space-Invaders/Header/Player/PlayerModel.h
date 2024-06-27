@@ -30,7 +30,7 @@ public:
 
     void Reset();
 
-    sf::Vector2f GetPlayerPosition();
+    sf::Vector2f GetPlayerPosition() const;
     void SetPlayerPosition(sf::Vector2f position);
     
     int GetPlayerScore() const;
@@ -38,7 +38,7 @@ public:
 
     float GetPlayerMoveSpeed() const;
 
-    PlayerState GetPlayerState();
+    PlayerState GetPlayerState() const;
     void SetPlayerState(PlayerState state);
     
 };
