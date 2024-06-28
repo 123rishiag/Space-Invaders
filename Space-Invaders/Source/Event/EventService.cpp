@@ -1,5 +1,5 @@
-#include "../Header/EventService.h"
-#include "../Header/ServiceLocator.h"
+#include "../../Header/Event/EventService.h"
+#include "../../Header/Global/ServiceLocator.h"
 
 EventService::EventService() { gameWindow = nullptr; }
 
@@ -40,6 +40,6 @@ bool EventService::IsGameWindowOpen() const { return gameWindow != nullptr; }
 
 bool EventService::GameWindowWasClosed() const { return gameEvent.type == sf::Event::Closed; }
 
-bool EventService::PressedLeftKey() { return gameEvent.key.code == sf::Keyboard::Left; }
+bool EventService::PressedLeftKey() const { return gameEvent.key.code == sf::Keyboard::Left; }
 
-bool EventService::PressedRightKey() { return gameEvent.key.code == sf::Keyboard::Right; }
+bool EventService::PressedRightKey() const { return gameEvent.key.code == sf::Keyboard::Right; }

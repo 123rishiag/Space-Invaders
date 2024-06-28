@@ -1,4 +1,4 @@
-#include "../Header/TimeService.h"
+#include "../../Header/Time/TimeService.h"
 
 void TimeService::Initialize()
 {
@@ -17,7 +17,7 @@ void TimeService::UpdateDeltaTime()
 	UpdatePreviousTime();
 }
 
-float TimeService::CalculateDeltaTime()
+float TimeService::CalculateDeltaTime() const
 {
 	// Calculate time difference in microseconds between the current and previous frame.
 	int delta = std::chrono::duration_cast<std::chrono::microseconds>(
@@ -34,7 +34,7 @@ void TimeService::UpdatePreviousTime()
 	previousTime = std::chrono::steady_clock::now();
 }
 
-float TimeService::GetDeltaTime()
+float TimeService::GetDeltaTime() const
 {
 	return deltaTime;
 }

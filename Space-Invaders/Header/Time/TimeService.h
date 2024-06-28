@@ -17,7 +17,7 @@ private:
 	float deltaTime; //to store the delta time
 
 	void UpdateDeltaTime(); // method to update time
-	float CalculateDeltaTime(); //calculate time by subtracting the previous time from the current time
+	float CalculateDeltaTime() const; //calculate time by subtracting the previous time from the current time
 	void UpdatePreviousTime(); // finally update the current time to be previous time
 
 public:
@@ -27,5 +27,5 @@ public:
 	void Update();
 
 	//getter
-	float GetDeltaTime();
+	float GetDeltaTime() const;
 };
