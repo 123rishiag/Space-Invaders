@@ -2,7 +2,7 @@
 
 #include "Header/Main/GameService.h"
 
-using namespace std;
+using namespace Main;
 
 int main()
 {

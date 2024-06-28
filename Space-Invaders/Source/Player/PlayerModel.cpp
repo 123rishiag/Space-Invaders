@@ -1,28 +1,30 @@
 #include "../../Header/Player/PlayerModel.h"
 
-PlayerModel::PlayerModel() { }
+namespace Player {
+	PlayerModel::PlayerModel() { }
 
-PlayerModel::~PlayerModel() { }
+	PlayerModel::~PlayerModel() { }
 
-void PlayerModel::Initialize() { Reset(); }
+	void PlayerModel::Initialize() { Reset(); }
 
-void PlayerModel::Reset()
-{
-	playerState = PlayerState::ALIVE;
-	playerPosition = initialPlayerPosition;
-	playerScore = 0;
+	void PlayerModel::Reset()
+	{
+		playerState = PlayerState::ALIVE;
+		playerPosition = initialPlayerPosition;
+		playerScore = 0;
+	}
+
+	sf::Vector2f PlayerModel::GetPlayerPosition() const { return playerPosition; }
+
+	void PlayerModel::SetPlayerPosition(sf::Vector2f position) { playerPosition = position; }
+
+	int PlayerModel::GetPlayerScore() const { return playerScore; }
+
+	void PlayerModel::SetPlayerScore(int score) { playerScore = score; }
+
+	float PlayerModel::GetPlayerMoveSpeed() const { return playerMovementSpeed; }
+
+	PlayerState PlayerModel::GetPlayerState() const { return playerState; }
+
+	void PlayerModel::SetPlayerState(PlayerState state) { playerState = state; }
 }
-
-sf::Vector2f PlayerModel::GetPlayerPosition() const { return playerPosition; }
-
-void PlayerModel::SetPlayerPosition(sf::Vector2f position) { playerPosition = position; }
-
-int PlayerModel::GetPlayerScore() const { return playerScore; }
-
-void PlayerModel::SetPlayerScore(int score) { playerScore = score; }
-
-float PlayerModel::GetPlayerMoveSpeed() const { return playerMovementSpeed; }
-
-PlayerState PlayerModel::GetPlayerState() const { return playerState; }
-
-void PlayerModel::SetPlayerState(PlayerState state) { playerState = state; }

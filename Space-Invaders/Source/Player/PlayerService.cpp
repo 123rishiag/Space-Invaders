@@ -1,27 +1,29 @@
 #include "../../Header/Player/PlayerService.h"
 #include "../../Header/Player/PlayerController.h"
 
-PlayerService::PlayerService()
-{
-	playerController = new PlayerController();
-}
+namespace Player {
+	PlayerService::PlayerService()
+	{
+		playerController = new PlayerController();
+	}
 
-PlayerService::~PlayerService()
-{
-	delete (playerController);
-}
+	PlayerService::~PlayerService()
+	{
+		delete (playerController);
+	}
 
-void PlayerService::Initialize()
-{
-	playerController->Initialize();
-}
+	void PlayerService::Initialize()
+	{
+		playerController->Initialize();
+	}
 
-void PlayerService::Update()
-{
-	playerController->Update();
-}
+	void PlayerService::Update()
+	{
+		playerController->Update();
+	}
 
-void PlayerService::Render()
-{
-	playerController->Render();
+	void PlayerService::Render()
+	{
+		playerController->Render();
+	}
 }
