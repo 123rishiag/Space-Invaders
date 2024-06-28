@@ -24,7 +24,7 @@ public:
 
 	bool PressedEscapeKey() const;
 	bool IsKeyboardEvent() const;
-	bool PressedLeftKey();
-	bool PressedRightKey();
+	bool PressedLeftKey() const;
+	bool PressedRightKey() const;
 
 };

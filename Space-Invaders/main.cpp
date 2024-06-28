@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Header/GameService.h"
+#include "Header/Main/GameService.h"
 
 using namespace std;
 
