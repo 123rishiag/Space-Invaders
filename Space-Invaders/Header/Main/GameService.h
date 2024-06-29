@@ -5,11 +5,18 @@ namespace Global {
 	class ServiceLocator;
 }
 namespace Main {
+	enum class GameState //create the enum
+	{
+		BOOT,
+		MAIN_MENU,
+		GAMEPLAY,
+	};
 	class GameService
 	{
 	private:
 		Global::ServiceLocator* serviceLocator;
 		sf::RenderWindow* gameWindow;
+		static GameState currentState;
 
 		void Initialize();		// Handles game initialization.
 		void InitializeVariables();// Handles game initialization variables.
@@ -25,6 +32,9 @@ namespace Main {
 		bool IsRunning() const;		// Checks if the game is currently running.
 
 		sf::RenderWindow* GetGameWindow() const; // Getter for the game window instance
+
+		static void SetGameState(GameState newState);
+		static GameState GetGameState();
 
 	};
 }
