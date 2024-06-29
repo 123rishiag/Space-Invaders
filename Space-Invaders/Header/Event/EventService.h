@@ -3,17 +3,33 @@
 #include <SFML/Window/Event.hpp>
 
 namespace Event {
+
+	enum class ButtonState
+	{
+		PRESSED,
+		HELD,
+		RELEASED,
+	};
+
 	class EventService
 	{
 	private:
 		sf::Event gameEvent; //event variable
 		sf::RenderWindow* gameWindow; //ptr to our game window
 
+		ButtonState leftMouseButtonState;
+		ButtonState rightMouseButtonState;
+		ButtonState leftArrowButtonState;
+		ButtonState rightArrowButtonState;
+		ButtonState aButtonState;
+		ButtonState dButtonState;
+
 		bool IsGameWindowOpen() const;
 		bool GameWindowWasClosed() const; //for the condition we already had - the title bar cross.
 		bool HasQuitGame() const; //for our new 'ESC' condition
 
-
+		void UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton) const;
+		void UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton) const;
 
 	public:
 		EventService();
@@ -30,6 +46,9 @@ namespace Event {
 
 		bool PressedLeftMouseButton() const;
 		bool PressedRightMouseButton() const;
+
+		bool PressedAKey() const;
+		bool PressedDKey() const;
 
 	};
 }
