@@ -13,14 +13,14 @@ namespace Player {
     {
 
     private:
-        const sf::Vector2f initialPlayerPosition = sf::Vector2f(100.0f, 500.0f);
+        const sf::Vector2f initialPlayerPosition = sf::Vector2f(950.f, 950.f);
         sf::Vector2f playerPosition;
         PlayerState playerState; //Declaration
         int playerScore;
 
     public:
-        const sf::Vector2f leftMostPosition = sf::Vector2f(50.0f, 0.f);
-        const sf::Vector2f rightMostPosition = sf::Vector2f(700.0f, 0.f);
+        const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
+        const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);
 
         const float playerMovementSpeed = 350.0f;
 
