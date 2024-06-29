@@ -15,6 +15,12 @@ namespace Event {
     void EventService::Update()
     {
         ProcessEvents();
+        UpdateMouseButtonsState(leftMouseButtonState, sf::Mouse::Left);
+        UpdateMouseButtonsState(rightMouseButtonState, sf::Mouse::Right);
+        UpdateKeyboardButtonsState(leftArrowButtonState, sf::Keyboard::Left);
+        UpdateKeyboardButtonsState(rightArrowButtonState, sf::Keyboard::Right);
+        UpdateKeyboardButtonsState(aButtonState, sf::Keyboard::A);
+        UpdateKeyboardButtonsState(dButtonState, sf::Keyboard::D);
     }
 
     void EventService::ProcessEvents()
@@ -30,6 +36,46 @@ namespace Event {
         }
     }
 
+    void EventService::UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton) const
+    {
+        if (sf::Mouse::isButtonPressed(mouseButton))
+        {
+            switch (currentButtonState)
+            {
+            case ButtonState::RELEASED:
+                currentButtonState = ButtonState::PRESSED;
+                break;
+            case ButtonState::PRESSED:
+                currentButtonState = ButtonState::HELD;
+                break;
+            }
+        }
+        else
+        {
+            currentButtonState = ButtonState::RELEASED;
+        }
+    }
+
+    void EventService::UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton) const
+    {
+        if (sf::Keyboard::isKeyPressed(keyboardButton))
+        {
+            switch (currentButtonState)
+            {
+            case ButtonState::RELEASED:
+                currentButtonState = ButtonState::PRESSED;
+                break;
+            case ButtonState::PRESSED:
+                currentButtonState = ButtonState::HELD;
+                break;
+            }
+        }
+        else
+        {
+            currentButtonState = ButtonState::RELEASED;
+        }
+    }
+
     bool EventService::HasQuitGame() const { return (IsKeyboardEvent() && PressedEscapeKey()); } // only true if the ESC key is pressed and a keyboard event has been registered
 
     //checks for if a keyboard key has been pressed
@@ -42,22 +88,16 @@ namespace Event {
 
     bool EventService::GameWindowWasClosed() const { return gameEvent.type == sf::Event::Closed; }
 
-    bool EventService::PressedLeftKey() const { return gameEvent.key.code == sf::Keyboard::Left; }
+    bool EventService::PressedLeftKey() const { return leftArrowButtonState == ButtonState::HELD; }
 
-    bool EventService::PressedRightKey() const { return gameEvent.key.code == sf::Keyboard::Right; }
+    bool EventService::PressedRightKey() const { return rightArrowButtonState == ButtonState::HELD; }
 
-    bool EventService::PressedLeftMouseButton() const
-    {
-        // check if a mouse button was pressed and which mouse button it was
-        return gameEvent.type == sf::Event::MouseButtonPressed && gameEvent.mouseButton.button == sf::Mouse::Left;
-    }
+    bool EventService::PressedAKey() const { return aButtonState == ButtonState::HELD; }
 
-    bool EventService::PressedRightMouseButton() const
-    {
-        /*
-        // same as above for the right button, if we want to we can move the mouse button
-        // press check to another function altogether.
-        */
-        return gameEvent.type == sf::Event::MouseButtonPressed && gameEvent.mouseButton.button == sf::Mouse::Right;
-    }
+    bool EventService::PressedDKey() const { return dButtonState == ButtonState::HELD; }
+
+
+    bool EventService::PressedLeftMouseButton() const { return leftMouseButtonState == ButtonState::PRESSED; }
+
+    bool EventService::PressedRightMouseButton() const { return rightMouseButtonState == ButtonState::PRESSED; }
 }
