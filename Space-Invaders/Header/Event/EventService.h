@@ -28,5 +28,8 @@ namespace Event {
 		bool PressedLeftKey() const;
 		bool PressedRightKey() const;
 
+		bool PressedLeftMouseButton() const;
+		bool PressedRightMouseButton() const;
+
 	};
 }

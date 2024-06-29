@@ -36,7 +36,7 @@ namespace UI
 			void InitializeBackgroundImage();
 			void ScaleBackgroundImage();
 
-			// however, we have 3 buttons so it's better to create a seperate function to check if they are loaded
+			// however, we have 3 buttons so it's better to create a separate function to check if they are loaded
 			void InitializeButtons();
 			bool LoadButtonTexturesFromFile();
 			void SetButtonSprites();
@@ -44,6 +44,9 @@ namespace UI
 			void ScaleAllButtons();
 			void ScaleButton(sf::Sprite* buttonToScale) const;
 			void PositionButtons();
+
+			void ProcessButtonInteractions();
+			bool ClickedButton(sf::Sprite*, sf::Vector2f);
 
 		public:
 			MainMenuUIController();
