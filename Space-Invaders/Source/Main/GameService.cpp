@@ -3,6 +3,8 @@
 
 namespace Main {
 	using namespace Global;
+	GameState GameService::currentState = GameState::BOOT;
+
 	GameService::GameService()
 	{
 		serviceLocator = nullptr; // Set service locator to null
@@ -59,4 +61,8 @@ namespace Main {
 	{
 		return gameWindow;
 	}
+
+	void GameService::SetGameState(GameState newState) { currentState = newState; }
+
+	GameState GameService::GetGameState() { return currentState; }
 }
