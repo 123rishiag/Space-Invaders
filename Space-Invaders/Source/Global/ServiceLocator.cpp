@@ -5,12 +5,14 @@ namespace Global {
     using namespace Event;
     using namespace Player;
     using namespace Time;
+    using namespace UI;
     // Constructor for initializing the ServiceLocator.
     ServiceLocator::ServiceLocator() {
         graphicService = nullptr; // Initialize graphicService to null
         eventService = nullptr; // Initialize eventService to null
         playerService = nullptr; // Initialize playerService to null
         timeService = nullptr; // Initialize timeService to null
+        uiService = nullptr; // Initialize uiService to null
         CreateServices(); // Call CreateServices to instantiate services
     }
 
@@ -25,6 +27,7 @@ namespace Global {
         eventService = new EventService(); // Dynamically create a EventService instance
         playerService = new PlayerService(); // Dynamically create a PlayerService instance
         timeService = new TimeService(); // Dynamically create a TimeService instance
+        uiService = new UIService(); // Dynamically create a UIService instance
     }
 
     // Deletes and deallocates memory for all services.
@@ -33,6 +36,7 @@ namespace Global {
         delete(eventService); // Delete the eventService instance
         delete(playerService); // Delete the playerService instance
         delete(timeService); // Delete the timeService instance
+        delete(uiService); // Delete the uiService instance
     }
 
     // Provides a method to access the unique ServiceLocator instance (object).
@@ -47,6 +51,7 @@ namespace Global {
         eventService->Initialize(); // Initialize event service
         playerService->Initialize(); // Initialize player service
         timeService->Initialize(); // Initialize time service
+        uiService->Initialize(); // Initialize ui service
     }
 
     // Updates all services.
@@ -55,6 +60,7 @@ namespace Global {
         eventService->Update(); // Update event service
         playerService->Update(); // Update player service
         timeService->Update(); // Update time service
+        uiService->Update(); // Update ui service
     }
 
     // Renders using the services.
@@ -63,6 +69,7 @@ namespace Global {
         // no event service because nothing to render
         playerService->Render(); // Render player service
         // no time service because nothing to render
+        uiService->Render(); // Render ui service
     }
 
     // Methods to Get Specific Services:
@@ -82,5 +89,9 @@ namespace Global {
     // Retrieve the TimeService instance
     TimeService* ServiceLocator::GetTimeService() const {
         return timeService;
+    }
+    // Retrieve the UIService instance
+    UIService* ServiceLocator::GetUIService() const {
+        return uiService;
     }
 }

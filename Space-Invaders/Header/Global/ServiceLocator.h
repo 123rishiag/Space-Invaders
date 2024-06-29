@@ -4,6 +4,7 @@
 #include "../Event/EventService.h"
 #include "../Player/PlayerService.h"
 #include "../Time/TimeService.h"
+#include "../UI/UIService.h"
 
 namespace Global {
 
@@ -17,6 +18,7 @@ namespace Global {
         Event::EventService* eventService;
         Player::PlayerService* playerService;
         Time::TimeService* timeService;
+        UI::UIService* uiService;
         // ..........................
         // ..........................
 
@@ -46,5 +48,6 @@ namespace Global {
         Event::EventService* GetEventService() const;   // Retrieve the EventService instance
         Player::PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
         Time::TimeService* GetTimeService() const;   // Retrieve the TimeService instance
+        UI::UIService* GetUIService() const;   // Retrieve the UIService instance
     };
 }
