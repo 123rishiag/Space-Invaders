@@ -35,6 +35,7 @@ namespace UI
 
 	void UIService::Render()
 	{
+		mainMenuController->Render();
 	}
 
 	void UIService::InitializeControllers()
