@@ -20,6 +20,7 @@ namespace Main {
 	{
 		serviceLocator->Initialize();
 		InitializeVariables();
+		ShowMainMenu();
 	}
 
 	void GameService::InitializeVariables()
@@ -49,6 +50,11 @@ namespace Main {
 		gameWindow->clear(serviceLocator->GetGraphicService()->GetWindowColor());
 		serviceLocator->Render(); // Render the current frame using the service locator
 		gameWindow->display(); // Display the rendered frame on the game window
+	}
+
+	void GameService::ShowMainMenu()
+	{
+		SetGameState(GameState::MAIN_MENU);
 	}
 
 	bool GameService::IsRunning() const

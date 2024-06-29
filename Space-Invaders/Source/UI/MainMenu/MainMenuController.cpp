@@ -10,6 +10,7 @@ namespace UI
         using namespace Global;
         using namespace Main;
         using namespace Graphic;
+        using namespace Event;
 
         MainMenuUIController::MainMenuUIController() { gameWindow = nullptr; }
 
@@ -92,8 +93,44 @@ namespace UI
             quitButtonSprite.setPosition({ xPosition, 900.f });
         }
 
+        /*
+          // First we get the location of the mouse on our screen.
+          // If we register a click while the mouse is above a button,
+          // then we do something based on which button it is
+          // we will call processButtonInteractions() on update.
+          */
+        void MainMenuUIController::ProcessButtonInteractions()
+        {
+            sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*gameWindow));
+
+            if (ClickedButton(&playButtonSprite, mousePosition))
+            {
+                GameService::SetGameState(GameState::GAMEPLAY);
+            }
+
+            if (ClickedButton(&instructionsButtonSprite, mousePosition))
+            {
+                printf("Clicked Instruction Button \\n");
+            }
+
+            if (ClickedButton(&quitButtonSprite, mousePosition))
+                gameWindow->close();
+        }
+
+        /*
+        // This checks if the use left clicked on a sprite and then returns
+        // true if the click happened while the mouse was overlapping with the
+        // sprite.
+        */
+        bool MainMenuUIController::ClickedButton(sf::Sprite* buttonSprite, sf::Vector2f mousePosition)
+        {
+            EventService* eventService = ServiceLocator::GetInstance()->GetEventService();
+            return eventService->PressedLeftMouseButton() && buttonSprite->getGlobalBounds().contains(mousePosition);
+        }
+
         void MainMenuUIController::Update()
         {
+            ProcessButtonInteractions();
         }
 
         void MainMenuUIController::Render()
