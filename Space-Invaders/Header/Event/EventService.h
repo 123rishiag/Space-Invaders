@@ -28,8 +28,8 @@ namespace Event {
 		bool GameWindowWasClosed() const; //for the condition we already had - the title bar cross.
 		bool HasQuitGame() const; //for our new 'ESC' condition
 
-		void UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton) const;
-		void UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton) const;
+		void UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton);
+		void UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton);
 
 	public:
 		EventService();

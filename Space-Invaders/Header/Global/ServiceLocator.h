@@ -3,6 +3,7 @@
 #include "../Graphic/GraphicService.h"
 #include "../Event/EventService.h"
 #include "../Player/PlayerService.h"
+#include "../Enemy/EnemyService.h"
 #include "../Time/TimeService.h"
 #include "../UI/UIService.h"
 
@@ -15,9 +16,10 @@ namespace Global {
     private:
         // Private Attributes:
         Graphic::GraphicService* graphicService;
+        Time::TimeService* timeService;
         Event::EventService* eventService;
         Player::PlayerService* playerService;
-        Time::TimeService* timeService;
+        Enemy::EnemyService* enemyService;
         UI::UIService* uiService;
         // ..........................
         // ..........................
@@ -45,9 +47,10 @@ namespace Global {
 
         // Methods to Get Specific Services: 
         Graphic::GraphicService* GetGraphicService() const;   // Retrieve the GraphicService instance
+        Time::TimeService* GetTimeService() const;   // Retrieve the TimeService instance
         Event::EventService* GetEventService() const;   // Retrieve the EventService instance
         Player::PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
-        Time::TimeService* GetTimeService() const;   // Retrieve the TimeService instance
+        Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
     };
 }
