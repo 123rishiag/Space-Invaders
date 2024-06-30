@@ -19,6 +19,7 @@ namespace Enemy
 
 	void EnemyService::Update()
 	{
+		enemy->Update();
 	}
 
 	void EnemyService::Render()
