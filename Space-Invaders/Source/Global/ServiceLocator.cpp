@@ -5,6 +5,7 @@ namespace Global {
     using namespace Graphic;
     using namespace Time;
     using namespace Event;
+    using namespace Gameplay;
     using namespace Player;
     using namespace Enemy;
     using namespace UI;
@@ -14,6 +15,7 @@ namespace Global {
         graphicService = nullptr; // Initialize graphicService to null
         timeService = nullptr; // Initialize timeService to null
         eventService = nullptr; // Initialize eventService to null
+        gameplayService = nullptr; // Initialize gameplayService to null
         playerService = nullptr; // Initialize playerService to null
         enemyService = nullptr; // Initialize enemyService to null
         uiService = nullptr; // Initialize uiService to null
@@ -30,6 +32,7 @@ namespace Global {
         graphicService = new GraphicService(); // Dynamically create a GraphicService instance
         timeService = new TimeService(); // Dynamically create a TimeService instance
         eventService = new EventService(); // Dynamically create a EventService instance
+        gameplayService = new GameplayService(); // Dynamically create a GameplayService instance
         playerService = new PlayerService(); // Dynamically create a PlayerService instance
         enemyService = new EnemyService(); // Dynamically create a EnemyService instance
         uiService = new UIService(); // Dynamically create a UIService instance
@@ -40,6 +43,7 @@ namespace Global {
         delete(graphicService); // Delete the graphicService instance
         delete(timeService); // Delete the timeService instance
         delete(eventService); // Delete the eventService instance
+        delete(gameplayService); // Delete the gameplayService instance
         delete(playerService); // Delete the playerService instance
         delete(enemyService); // Delete the enemyService instance
         delete(uiService); // Delete the uiService instance
@@ -56,6 +60,7 @@ namespace Global {
         graphicService->Initialize(); // Initialize graphic service
         timeService->Initialize(); // Initialize time service
         eventService->Initialize(); // Initialize event service
+        gameplayService->Initialize(); // Initialize gameplay service
         playerService->Initialize(); // Initialize player service
         enemyService->Initialize(); // Initialize enemy service
         uiService->Initialize(); // Initialize ui service
@@ -68,8 +73,9 @@ namespace Global {
         eventService->Update(); // Update event service
         if (GameService::GetGameState() == GameState::GAMEPLAY)
         {
+            gameplayService->Update(); // Update gameplay service
             playerService->Update(); // Update player service
-            enemyService->Update(); // Update enemy service
+            enemyService->Update(); // Update enemy service  
         }
         uiService->Update(); // Update ui service
     }
@@ -81,6 +87,7 @@ namespace Global {
         // no event service because nothing to render
         if (GameService::GetGameState() == GameState::GAMEPLAY)
         {
+            gameplayService->Render(); // Update gameplay service
             playerService->Render(); // Render player service
             enemyService->Render(); // Render enemy service
         }
@@ -100,6 +107,10 @@ namespace Global {
     // Retrieve the EventService instance
     EventService* ServiceLocator::GetEventService() const {
         return eventService;
+    }
+    // Retrieve the GameplayService instance
+    GameplayService* ServiceLocator::GetGameplayService() const {
+        return gameplayService;
     }
     // Retrieve the PlayerService instance
     PlayerService* ServiceLocator::GetPlayerService() const {

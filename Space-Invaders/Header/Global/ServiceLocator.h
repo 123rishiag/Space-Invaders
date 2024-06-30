@@ -1,10 +1,11 @@
 #pragma once
 
 #include "../Graphic/GraphicService.h"
+#include "../Time/TimeService.h"
 #include "../Event/EventService.h"
+#include "../Gameplay/GameplayService.h"
 #include "../Player/PlayerService.h"
 #include "../Enemy/EnemyService.h"
-#include "../Time/TimeService.h"
 #include "../UI/UIService.h"
 
 namespace Global {
@@ -18,6 +19,7 @@ namespace Global {
         Graphic::GraphicService* graphicService;
         Time::TimeService* timeService;
         Event::EventService* eventService;
+        Gameplay::GameplayService* gameplayService;
         Player::PlayerService* playerService;
         Enemy::EnemyService* enemyService;
         UI::UIService* uiService;
@@ -49,6 +51,7 @@ namespace Global {
         Graphic::GraphicService* GetGraphicService() const;   // Retrieve the GraphicService instance
         Time::TimeService* GetTimeService() const;   // Retrieve the TimeService instance
         Event::EventService* GetEventService() const;   // Retrieve the EventService instance
+        Gameplay::GameplayService* GetGameplayService() const;   // Retrieve the GameplayService instance
         Player::PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
         Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
