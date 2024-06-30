@@ -36,7 +36,7 @@ namespace Event {
         }
     }
 
-    void EventService::UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton) const
+    void EventService::UpdateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton)
     {
         if (sf::Mouse::isButtonPressed(mouseButton))
         {
@@ -56,7 +56,7 @@ namespace Event {
         }
     }
 
-    void EventService::UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton) const
+    void EventService::UpdateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton)
     {
         if (sf::Keyboard::isKeyPressed(keyboardButton))
         {

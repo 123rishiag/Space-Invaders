@@ -1,17 +1,21 @@
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Main/GameService.h"
 
 namespace Global {
     using namespace Graphic;
+    using namespace Time;
     using namespace Event;
     using namespace Player;
-    using namespace Time;
+    using namespace Enemy;
     using namespace UI;
+    using namespace Main;
     // Constructor for initializing the ServiceLocator.
     ServiceLocator::ServiceLocator() {
         graphicService = nullptr; // Initialize graphicService to null
+        timeService = nullptr; // Initialize timeService to null
         eventService = nullptr; // Initialize eventService to null
         playerService = nullptr; // Initialize playerService to null
-        timeService = nullptr; // Initialize timeService to null
+        enemyService = nullptr; // Initialize enemyService to null
         uiService = nullptr; // Initialize uiService to null
         CreateServices(); // Call CreateServices to instantiate services
     }
@@ -24,18 +28,20 @@ namespace Global {
     // Creates instances of all services.
     void ServiceLocator::CreateServices() {
         graphicService = new GraphicService(); // Dynamically create a GraphicService instance
+        timeService = new TimeService(); // Dynamically create a TimeService instance
         eventService = new EventService(); // Dynamically create a EventService instance
         playerService = new PlayerService(); // Dynamically create a PlayerService instance
-        timeService = new TimeService(); // Dynamically create a TimeService instance
+        enemyService = new EnemyService(); // Dynamically create a EnemyService instance
         uiService = new UIService(); // Dynamically create a UIService instance
     }
 
     // Deletes and deallocates memory for all services.
     void ServiceLocator::ClearAllServices() {
         delete(graphicService); // Delete the graphicService instance
+        delete(timeService); // Delete the timeService instance
         delete(eventService); // Delete the eventService instance
         delete(playerService); // Delete the playerService instance
-        delete(timeService); // Delete the timeService instance
+        delete(enemyService); // Delete the enemyService instance
         delete(uiService); // Delete the uiService instance
     }
 
@@ -48,27 +54,36 @@ namespace Global {
     // Initializes the ServiceLocator.
     void ServiceLocator::Initialize() {
         graphicService->Initialize(); // Initialize graphic service
+        timeService->Initialize(); // Initialize time service
         eventService->Initialize(); // Initialize event service
         playerService->Initialize(); // Initialize player service
-        timeService->Initialize(); // Initialize time service
+        enemyService->Initialize(); // Initialize enemy service
         uiService->Initialize(); // Initialize ui service
     }
 
     // Updates all services.
     void ServiceLocator::Update() {
         graphicService->Update(); // Update graphic service
-        eventService->Update(); // Update event service
-        playerService->Update(); // Update player service
         timeService->Update(); // Update time service
+        eventService->Update(); // Update event service
+        if (GameService::GetGameState() == GameState::GAMEPLAY)
+        {
+            playerService->Update(); // Update player service
+            enemyService->Update(); // Update enemy service
+        }
         uiService->Update(); // Update ui service
     }
 
     // Renders using the services.
     void ServiceLocator::Render() {
         graphicService->Render(); // Render graphic service
-        // no event service because nothing to render
-        playerService->Render(); // Render player service
         // no time service because nothing to render
+        // no event service because nothing to render
+        if (GameService::GetGameState() == GameState::GAMEPLAY)
+        {
+            playerService->Render(); // Render player service
+            enemyService->Render(); // Render enemy service
+        }
         uiService->Render(); // Render ui service
     }
 
@@ -78,6 +93,10 @@ namespace Global {
     GraphicService* ServiceLocator::GetGraphicService() const {
         return graphicService;
     }
+    // Retrieve the TimeService instance
+    TimeService* ServiceLocator::GetTimeService() const {
+        return timeService;
+    }
     // Retrieve the EventService instance
     EventService* ServiceLocator::GetEventService() const {
         return eventService;
@@ -86,9 +105,9 @@ namespace Global {
     PlayerService* ServiceLocator::GetPlayerService() const {
         return playerService;
     }
-    // Retrieve the TimeService instance
-    TimeService* ServiceLocator::GetTimeService() const {
-        return timeService;
+    // Retrieve the EnemyService instance
+    EnemyService* ServiceLocator::GetEnemyService() const {
+        return enemyService;
     }
     // Retrieve the UIService instance
     UIService* ServiceLocator::GetUIService() const {
