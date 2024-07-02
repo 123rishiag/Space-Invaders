@@ -3,6 +3,7 @@
 
 namespace Enemy
 {
+	enum class EnemyType;
 	class EnemyController;
 	class EnemyService
 	{
@@ -13,6 +14,8 @@ namespace Enemy
 
 		void UpdateSpawnTimer();
 		void ProcessEnemySpawn();
+		EnemyType GetRandomEnemyType() const;
+		EnemyController* CreateEnemy(EnemyType enemyType) const;
 		void Destroy(); // function to delete enemy
 
 	public:
@@ -23,6 +26,7 @@ namespace Enemy
 		void Update();
 		void Render();
 
-		void SpawnEnemy(); 		// Function to spawn enemy
+		EnemyController* SpawnEnemy();
+		void DestroyEnemy(EnemyController* enemyController);
 	};
 }

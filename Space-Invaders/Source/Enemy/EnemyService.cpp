@@ -1,5 +1,8 @@
 #include "../../Header/Enemy/EnemyService.h"
 #include "../../Header/Enemy/EnemyController.h"
+#include "../../Header/Enemy/Controllers/SubZeroController.h"
+#include "../../Header/Enemy/Controllers/ZapperController.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Time/TimeService.h"
 
@@ -7,8 +10,11 @@ namespace Enemy
 {
 	using namespace Global;
 	using namespace Time;
+	using namespace Controller;
 
-	EnemyService::EnemyService() {}
+	EnemyService::EnemyService() {
+		std::srand(static_cast<unsigned>(std::time(nullptr)));
+	}
 
 	EnemyService::~EnemyService() { Destroy(); }
 
@@ -49,12 +55,53 @@ namespace Enemy
 		}
 	}
 
-	void EnemyService::SpawnEnemy()
+	EnemyController* EnemyService::SpawnEnemy()
 	{
-		//EnemyController* enemyController = new EnemyController();
-		//enemyController->Initialize();
+		// The base class pointer will be pointing to a child class object
+		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType());
 
-		//enemyList.push_back(enemyController);
+		enemyController->Initialize();
+		enemyList.push_back(enemyController);
+
+		return enemyController;
+	}
+
+	// Function to destroy an enemy controller object from the enemy_list vector.
+	void EnemyService::DestroyEnemy(EnemyController* enemyController)
+	{
+		// Erase the enemy_controller object from the enemy_list vector.
+		// std::remove rearranges the elements in the vector so that all elements 
+		// that are equal to enemy_controller are moved to the end of the vector,
+		// then it returns an iterator pointing to the start of the removed elements.
+		// The erase function then removes those elements from the vector.
+		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), enemyController), enemyList.end());
+
+		// Delete the enemy_controller object from memory to free up resources.
+		delete(enemyController);
+	}
+
+	EnemyType EnemyService::GetRandomEnemyType() const
+	{
+		int randomType = std::rand() % 2;  //since we only have 2 enemies right now
+		return static_cast<Enemy::EnemyType>(randomType); //cast int to EnemyType enum class
+	}
+
+	EnemyController* EnemyService::CreateEnemy(EnemyType enemyType) const
+	{
+		switch (enemyType)
+		{
+		case::Enemy::EnemyType::ZAPPER:
+			return new ZapperController(Enemy::EnemyType::ZAPPER);
+
+			/*case::Enemy::EnemyType::THUNDER_SNAKE:
+				return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE);*/
+
+		case::Enemy::EnemyType::SUBZERO:
+			return new SubzeroController(Enemy::EnemyType::SUBZERO);
+
+			/*case::Enemy::EnemyType::UFO:
+				return new UFOController(Enemy::EnemyType::UFO);*/
+		}
 	}
 
 	void EnemyService::Destroy()

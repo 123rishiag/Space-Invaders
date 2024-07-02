@@ -22,8 +22,8 @@ namespace Enemy
         ~EnemyModel();
 
         //const data related to movement and bounds
-        const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
-        const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);
+        const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 50.f);
+        const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 50.f);
 
         const float verticalTravelDistance = 100.f;
         const float enemyMovementSpeed = 250.0f;
