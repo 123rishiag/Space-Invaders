@@ -36,6 +36,7 @@ namespace Enemy
 		enemyView->Render();
 	}
 
+	/*
 	//switch between move functions based on move dir state
 	void EnemyController::Move()
 	{
@@ -54,6 +55,7 @@ namespace Enemy
 			break;
 		}
 	}
+	*/
 
 	void EnemyController::MoveLeft()
 	{

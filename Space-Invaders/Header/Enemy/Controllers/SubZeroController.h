@@ -1,5 +1,5 @@
 #pragma once
-#include "../../header/Enemy/EnemyController.h"
+#include "../../Header/Enemy/EnemyController.h"
 
 namespace Enemy
 {
@@ -8,7 +8,16 @@ namespace Enemy
         class SubzeroController : public EnemyController
         {
         private:
+            float verticalMovementSpeed = 100.f;
 
+            void Move() override;
+            void MoveDown();
+
+        public:
+            SubzeroController();
+            ~SubzeroController();
+
+            void Initialize() override;
         };
     }
 }
