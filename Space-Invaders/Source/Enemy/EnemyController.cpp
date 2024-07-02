@@ -22,6 +22,7 @@ namespace Enemy
 	void EnemyController::Initialize()
 	{
 		enemyModel->Initialize();
+		enemyModel->SetEnemyPosition(GetRandomInitialPosition());
 		enemyView->Initialize(this); // we will discuss this soon
 	}
 
@@ -29,6 +30,7 @@ namespace Enemy
 	{
 		Move();
 		enemyView->Update();
+		HandleOutOfBounds();
 	}
 
 	void EnemyController::Render()
@@ -104,9 +106,43 @@ namespace Enemy
 	}
 	*/
 
+	// Function to generate a random initial position for the enemy.
+	sf::Vector2f EnemyController::GetRandomInitialPosition() const
+	{
+		// Calculate the distance between the leftmost and rightmost positions of the enemy.
+		float xOffsetDistance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
+
+		// Calculate the x position by adding the x offset distance to the leftmost position.
+		float xPosition = enemyModel->leftMostPosition.x + xOffsetDistance;
+
+		// The y position remains the same.
+		float yPosition = enemyModel->leftMostPosition.y;
+
+		// Return the calculated position as a 2D vector.
+		return sf::Vector2f(xPosition, yPosition);
+	}
+
+	void EnemyController::HandleOutOfBounds()
+	{
+		sf::Vector2f enemyPosition = GetEnemyPosition();
+		sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow()->getSize();
+
+		// Destroy the enemy if it goes out of bounds.
+		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
+		{
+			ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
+		}
+	}
+
 	EnemyType EnemyController::GetEnemyType() const
 	{
 		return enemyModel->GetEnemyType();
+	}
+
+	EnemyState EnemyController::GetEnemyState() const
+	{
+		return enemyModel->GetEnemyState();
 	}
 
 	sf::Vector2f EnemyController::GetEnemyPosition()
