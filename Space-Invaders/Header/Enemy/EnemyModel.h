@@ -3,13 +3,9 @@
 
 namespace Enemy
 {
-    // new enum class
-    enum class MovementDirection
-    {
-        LEFT,
-        RIGHT,
-        DOWN,
-    };
+    enum class EnemyType;
+    enum class MovementDirection;
+    enum class EnemyState;
 
     class EnemyModel
     {
@@ -17,10 +13,12 @@ namespace Enemy
         sf::Vector2f referencePosition = sf::Vector2f(50.f, 50.f);
         sf::Vector2f enemyPosition;
 
-        MovementDirection movementDirection; 	//Declaration
+        MovementDirection movementDirection; 
+        EnemyType enemyType;
+        EnemyState enemyState;
 
     public:
-        EnemyModel();
+        EnemyModel(EnemyType type);
         ~EnemyModel();
 
         //const data related to movement and bounds
@@ -37,6 +35,12 @@ namespace Enemy
 
         sf::Vector2f GetReferencePosition() const;
         void SetReferencePosition(sf::Vector2f position);
+
+        EnemyType GetEnemyType() const;
+        void SetEnemyType(EnemyType type);
+
+        EnemyState GetEnemyState() const;
+        void SetEnemyState(EnemyState state);
 
         MovementDirection GetMovementDirection() const;
         void SetMovementDirection(MovementDirection direction);
