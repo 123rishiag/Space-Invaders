@@ -7,10 +7,10 @@ namespace Enemy
 {
 	using namespace Global;
 
-	EnemyController::EnemyController()
+	EnemyController::EnemyController(EnemyType type)
 	{
 		enemyView = new EnemyView();
-		enemyModel = new EnemyModel();
+		enemyModel = new EnemyModel(type);
 	}
 
 	EnemyController::~EnemyController()
@@ -55,7 +55,6 @@ namespace Enemy
 			break;
 		}
 	}
-	*/
 
 	void EnemyController::MoveLeft()
 	{
@@ -102,6 +101,12 @@ namespace Enemy
 			else enemyModel->SetMovementDirection(MovementDirection::LEFT);
 		}
 		else enemyModel->SetEnemyPosition(currentPosition);
+	}
+	*/
+
+	EnemyType EnemyController::GetEnemyType() const
+	{
+		return enemyModel->GetEnemyType();
 	}
 
 	sf::Vector2f EnemyController::GetEnemyPosition()

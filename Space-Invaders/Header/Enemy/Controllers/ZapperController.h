@@ -16,7 +16,7 @@ namespace Enemy
             void MoveDown();
 
         public:
-            ZapperController();
+            ZapperController(EnemyType type);
             ~ZapperController();
 
             void Initialize() override;

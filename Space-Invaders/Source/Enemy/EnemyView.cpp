@@ -2,11 +2,13 @@
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Graphic/GraphicService.h"
 #include "../../Header/Enemy/EnemyController.h"
+#include"../../Header/Enemy/EnemyConfig.h"
 
 namespace Enemy
 {
 	using namespace Global;
 	using namespace Graphic;
+
 
 	EnemyView::EnemyView() { }
 
@@ -16,21 +18,33 @@ namespace Enemy
 	{
 		enemyController = controller;
 		gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-		InitializeEnemySprite();
+		InitializeEnemySprite(enemyController->GetEnemyType()); //need to get the specific enemy type
 	}
 
-	void EnemyView::InitializeEnemySprite()
+	void EnemyView::InitializeEnemySprite(EnemyType type)
 	{
-		if (enemyTexture.loadFromFile(enemyTexturePath)) //check if the texture loaded
+		switch (type)
 		{
-			enemySprite.setTexture(enemyTexture); //set the sprite
-			ScaleEnemySprite(); // call the method to scale the sprite
+		case::Enemy::EnemyType::SUBZERO:
+			if (enemyTexture.loadFromFile(subzeroTexturePath))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
+		case::Enemy::EnemyType::ZAPPER:
+			if (enemyTexture.loadFromFile(zapperTexturePath))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
 		}
+
 	}
 
 	void EnemyView::ScaleEnemySprite()
 	{
-		// method to scale the Sprite according to our set dimensions. Don't worry about the static_cast, that will be discussed later.
 		enemySprite.setScale(
 			static_cast<float>(enemySpriteWidth) / enemySprite.getTexture()->getSize().x,
 			static_cast<float>(enemySpriteHeight) / enemySprite.getTexture()->getSize().y
