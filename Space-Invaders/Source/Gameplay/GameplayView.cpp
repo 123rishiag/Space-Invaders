@@ -1,7 +1,7 @@
 #include "../../Header/Gameplay/GameplayView.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Graphic/GraphicService.h"
-
+#include "../../Header/Global/Config.h"
 
 namespace Gameplay
 {
@@ -27,7 +27,7 @@ namespace Gameplay
 
 	void GameplayView::InitializeBackgroundSprite()
 	{
-		if (backgroundTexture.loadFromFile(backgroundTexturePath))
+		if (backgroundTexture.loadFromFile(Config::backgroundTexturePath))
 		{
 			backgroundSprite.setTexture(backgroundTexture);
 			ScaleBackgroundSprite();

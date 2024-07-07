@@ -9,8 +9,6 @@ namespace Element
 
         class BunkerView {
         private:
-            const sf::String bunkerTexturePath = "assets/textures/bunker.png";
-
             const float bunkerSpriteWidth = 80.f;
             const float bunkerSpriteHeight = 80.f;
 

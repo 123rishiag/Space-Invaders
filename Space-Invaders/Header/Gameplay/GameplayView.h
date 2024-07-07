@@ -6,8 +6,6 @@ namespace Gameplay
     class GameplayView
     {
     private:
-        const sf::String backgroundTexturePath = "assets/textures/space_invaders_bg.png";
-
         sf::RenderWindow* gameWindow;
         sf::Texture backgroundTexture;
         sf::Sprite backgroundSprite;
