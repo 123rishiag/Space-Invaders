@@ -1,22 +1,28 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Element/Bunker/BunkerModel.h"
 
-namespace Element {
-    class BunkerView;
-    class BunkerModel;
-	class BunkerController {
-    protected:
-        BunkerView* bunkerView;
-        BunkerModel* bunkerModel;
+namespace Element 
+{
+    namespace Bunker 
+    {
+        class BunkerView;
 
-    public:
-        BunkerController();
-        virtual ~BunkerController();
+        class BunkerController 
+        {
+        private:
+            BunkerView* bunkerView;
+            BunkerData bunkerData;
 
-        virtual void Initialize();
-        void Update();
-        void Render();
+        public:
+            BunkerController();
+            virtual ~BunkerController();
 
-        sf::Vector2f GetBunkerPosition();
-	};
+            virtual void Initialize(BunkerData data);
+            void Update();
+            void Render();
+
+            sf::Vector2f GetBunkerPosition() const;
+        };
+    }
 }
