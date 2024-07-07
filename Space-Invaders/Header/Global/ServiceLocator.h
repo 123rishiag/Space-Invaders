@@ -6,6 +6,7 @@
 #include "../Gameplay/GameplayService.h"
 #include "../Player/PlayerService.h"
 #include "../Enemy/EnemyService.h"
+#include "../Element/ElementService.h"
 #include "../UI/UIService.h"
 
 namespace Global {
@@ -22,6 +23,7 @@ namespace Global {
         Gameplay::GameplayService* gameplayService;
         Player::PlayerService* playerService;
         Enemy::EnemyService* enemyService;
+        Element::ElementService* elementService;
         UI::UIService* uiService;
         // ..........................
         // ..........................
@@ -54,6 +56,7 @@ namespace Global {
         Gameplay::GameplayService* GetGameplayService() const;   // Retrieve the GameplayService instance
         Player::PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
         Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
+        Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
     };
 }
