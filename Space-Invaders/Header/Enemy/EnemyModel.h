@@ -24,6 +24,7 @@ namespace Enemy
         //const data related to movement and bounds
         const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 50.f);
         const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 50.f);
+        const sf::Vector2f barrelPositionOffset = sf::Vector2f(20.f, 50.f); // we add this offset variable
 
         const float verticalTravelDistance = 100.f;
         const float enemyMovementSpeed = 250.0f;

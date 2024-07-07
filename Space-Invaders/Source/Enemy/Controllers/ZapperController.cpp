@@ -1,6 +1,7 @@
 #include "../../Header/Enemy/Controllers/ZapperController.h"
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
+#include "../../Header/Bullet/BulletConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 
 
@@ -17,6 +18,15 @@ namespace Enemy
         void ZapperController::Initialize()
         {
             EnemyController::Initialize(); // init the base controller
+            rateOfFire = zapperRateOfFire;
+        }
+
+        void ZapperController::FireBullet()
+        {
+            // we spawn the bullet and pass the needed parameters
+            ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::LASER_BULLET,
+                enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
+                Bullet::MovementDirection::DOWN);
         }
 
         // Method for moving the Zapper enemy

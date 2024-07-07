@@ -18,6 +18,15 @@ namespace Enemy
 		{
 			EnemyController::Initialize();
 			enemyModel->SetMovementDirection(MovementDirection::DOWN);
+			rateOfFire = subzeroRateOfFire;
+		}
+
+		void SubzeroController::FireBullet()
+		{
+			// we spawn the bullet and pass the needed parameters
+			ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::TORPEDO,
+				enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
+				Bullet::MovementDirection::DOWN);
 		}
 
 		void SubzeroController::Move()
