@@ -6,6 +6,7 @@
 #include "../Gameplay/GameplayService.h"
 #include "../Player/PlayerService.h"
 #include "../Enemy/EnemyService.h"
+#include "../Bullet/BulletService.h"
 #include "../Element/ElementService.h"
 #include "../UI/UIService.h"
 #include "../Sound/SoundService.h"
@@ -24,6 +25,7 @@ namespace Global {
         Gameplay::GameplayService* gameplayService;
         Player::PlayerService* playerService;
         Enemy::EnemyService* enemyService;
+        Bullet::BulletService* bulletService;
         Element::ElementService* elementService;
         UI::UIService* uiService;
         Sound::SoundService* soundService;
@@ -58,8 +60,11 @@ namespace Global {
         Gameplay::GameplayService* GetGameplayService() const;   // Retrieve the GameplayService instance
         Player::PlayerService* GetPlayerService() const;   // Retrieve the PlayerService instance
         Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
+        Bullet::BulletService* GetBulletService() const;   // Retrieve the BulletService instance
         Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
         Sound::SoundService* GetSoundService() const;   // Retrieve the SoundService instance
+
+        void DeleteServiceLocator();
     };
 }
