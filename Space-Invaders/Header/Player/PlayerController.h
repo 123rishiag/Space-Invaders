@@ -13,6 +13,7 @@ namespace Player {
         PlayerModel* playerModel;
 
         void ProcessPlayerInput();
+        void FireBullet();
         void MoveLeft();
         void MoveRight();
 

@@ -8,9 +8,11 @@ namespace Enemy
         class ThunderSnakeController : public EnemyController
         {
         private:
+            const float thunderSnakeRateOfFire = 6.f;
             float verticalMovementSpeed = 20.f;
-            float enemyMovementSpeed = 550.0f;
+            float horizontalMovementSpeed = 550.0f;
 
+            void FireBullet() override;
             void Move() override;
             void MoveLeft();
             void MoveRight();

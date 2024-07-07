@@ -17,6 +17,15 @@ namespace Enemy
         void ThunderSnakeController::Initialize()
         {
             EnemyController::Initialize(); // init the base controller
+            rateOfFire = thunderSnakeRateOfFire;
+        }
+
+        void ThunderSnakeController::FireBullet()
+        {
+            // we spawn the bullet and pass the needed parameters
+            ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::FROST_BULLET,
+                enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
+                Bullet::MovementDirection::DOWN);
         }
 
         // Method for moving the Thunder Snake enemy
@@ -44,7 +53,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemyModel->GetEnemyPosition();
 
             // Update the position to move left
-            currentPosition.x -= enemyMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+            currentPosition.x -= horizontalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
             currentPosition.y += verticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
             // Check if the enemy reached the leftmost position
@@ -68,7 +77,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemyModel->GetEnemyPosition();
 
             // Update the position to move right
-            currentPosition.x += enemyMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+            currentPosition.x += horizontalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
             currentPosition.y += verticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
             // Check if the enemy reached the rightmost position

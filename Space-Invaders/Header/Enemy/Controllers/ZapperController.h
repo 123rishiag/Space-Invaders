@@ -8,8 +8,10 @@ namespace Enemy
         class ZapperController : public EnemyController
         {
         private:
+            const float zapperRateOfFire = 4.f;
             float verticalTravelDistance = 100.f;
 
+            void FireBullet() override;
             void Move() override;
             void MoveLeft();
             void MoveRight();
