@@ -8,6 +8,7 @@
 #include "../Enemy/EnemyService.h"
 #include "../Element/ElementService.h"
 #include "../UI/UIService.h"
+#include "../Sound/SoundService.h"
 
 namespace Global {
 
@@ -25,6 +26,7 @@ namespace Global {
         Enemy::EnemyService* enemyService;
         Element::ElementService* elementService;
         UI::UIService* uiService;
+        Sound::SoundService* soundService;
         // ..........................
         // ..........................
 
@@ -58,5 +60,6 @@ namespace Global {
         Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
         Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
+        Sound::SoundService* GetSoundService() const;   // Retrieve the SoundService instance
     };
 }
