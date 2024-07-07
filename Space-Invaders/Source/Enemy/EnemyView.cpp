@@ -39,6 +39,13 @@ namespace Enemy
 				ScaleEnemySprite();
 			}
 			break;
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			if (enemyTexture.loadFromFile(thunderSnakeTexturePath))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
 		}
 
 	}
