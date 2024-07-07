@@ -8,10 +8,12 @@ namespace Global {
     using namespace Gameplay;
     using namespace Player;
     using namespace Enemy;
+    using namespace Bullet;
     using namespace Element;
     using namespace UI;
     using namespace Sound;
     using namespace Main;
+
     // Constructor for initializing the ServiceLocator.
     ServiceLocator::ServiceLocator() {
         graphicService = nullptr; // Initialize graphicService to null
@@ -20,6 +22,7 @@ namespace Global {
         gameplayService = nullptr; // Initialize gameplayService to null
         playerService = nullptr; // Initialize playerService to null
         enemyService = nullptr; // Initialize enemyService to null
+        bulletService = nullptr; // Initialize bulletService to null
         elementService = nullptr; // Initialize elementService to null
         uiService = nullptr; // Initialize uiService to null
         soundService = nullptr; // Initialize uiService to null
@@ -39,6 +42,7 @@ namespace Global {
         gameplayService = new GameplayService(); // Dynamically create a GameplayService instance
         playerService = new PlayerService(); // Dynamically create a PlayerService instance
         enemyService = new EnemyService(); // Dynamically create a EnemyService instance
+        bulletService = new BulletService(); // Dynamically create a bulletService instance
         elementService = new ElementService(); // Dynamically create a ElementService instance
         uiService = new UIService(); // Dynamically create a UIService instance
         soundService = new SoundService(); // Dynamically create a SoundService instance
@@ -52,6 +56,7 @@ namespace Global {
         delete(gameplayService); // Delete the gameplayService instance
         delete(playerService); // Delete the playerService instance
         delete(enemyService); // Delete the enemyService instance
+        delete(bulletService); // Delete the bulletService instance
         delete(elementService); // Delete the elementService instance
         delete(uiService); // Delete the uiService instance
         delete(soundService); // Delete the soundService instance
@@ -71,6 +76,7 @@ namespace Global {
         gameplayService->Initialize(); // Initialize gameplay service
         playerService->Initialize(); // Initialize player service
         enemyService->Initialize(); // Initialize enemy service
+        bulletService->Initialize(); // Initialize bullet service
         elementService->Initialize(); // Initialize element service
         uiService->Initialize(); // Initialize ui service
         soundService->Initialize(); // Initialize sound service
@@ -86,6 +92,7 @@ namespace Global {
             gameplayService->Update(); // Update gameplay service
             playerService->Update(); // Update player service
             enemyService->Update(); // Update enemy service
+            bulletService->Update(); // Update bullet service
             elementService->Update(); // Update element service 
         }
         uiService->Update(); // Update ui service
@@ -101,6 +108,7 @@ namespace Global {
             gameplayService->Render(); // Update gameplay service
             playerService->Render(); // Render player service
             enemyService->Render(); // Render enemy service
+            bulletService->Render(); // Render bullet service
             elementService->Render(); // Render element service 
         }
         uiService->Render(); // Render ui service
@@ -132,6 +140,10 @@ namespace Global {
     EnemyService* ServiceLocator::GetEnemyService() const {
         return enemyService;
     }
+    // Retrieve the BulletService instance
+    BulletService* ServiceLocator::GetBulletService() const {
+        return bulletService;
+    }
     // Retrieve the ElementService instance
     ElementService* ServiceLocator::GetElementService() const {
         return elementService;
@@ -143,5 +155,10 @@ namespace Global {
     // Retrieve the SoundService instance
     SoundService* ServiceLocator::GetSoundService() const {
         return soundService;
+    }
+
+    void ServiceLocator::DeleteServiceLocator()
+    {
+        delete(this);
     }
 }
