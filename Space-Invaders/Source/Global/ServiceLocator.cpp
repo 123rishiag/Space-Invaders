@@ -10,6 +10,7 @@ namespace Global {
     using namespace Enemy;
     using namespace Element;
     using namespace UI;
+    using namespace Sound;
     using namespace Main;
     // Constructor for initializing the ServiceLocator.
     ServiceLocator::ServiceLocator() {
@@ -21,6 +22,7 @@ namespace Global {
         enemyService = nullptr; // Initialize enemyService to null
         elementService = nullptr; // Initialize elementService to null
         uiService = nullptr; // Initialize uiService to null
+        soundService = nullptr; // Initialize uiService to null
         CreateServices(); // Call CreateServices to instantiate services
     }
 
@@ -39,6 +41,7 @@ namespace Global {
         enemyService = new EnemyService(); // Dynamically create a EnemyService instance
         elementService = new ElementService(); // Dynamically create a ElementService instance
         uiService = new UIService(); // Dynamically create a UIService instance
+        soundService = new SoundService(); // Dynamically create a SoundService instance
     }
 
     // Deletes and deallocates memory for all services.
@@ -51,6 +54,7 @@ namespace Global {
         delete(enemyService); // Delete the enemyService instance
         delete(elementService); // Delete the elementService instance
         delete(uiService); // Delete the uiService instance
+        delete(soundService); // Delete the soundService instance
     }
 
     // Provides a method to access the unique ServiceLocator instance (object).
@@ -69,6 +73,7 @@ namespace Global {
         enemyService->Initialize(); // Initialize enemy service
         elementService->Initialize(); // Initialize element service
         uiService->Initialize(); // Initialize ui service
+        soundService->Initialize(); // Initialize sound service
     }
 
     // Updates all services.
@@ -134,5 +139,9 @@ namespace Global {
     // Retrieve the UIService instance
     UIService* ServiceLocator::GetUIService() const {
         return uiService;
+    }
+    // Retrieve the SoundService instance
+    SoundService* ServiceLocator::GetSoundService() const {
+        return soundService;
     }
 }
