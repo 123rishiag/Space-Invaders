@@ -1,29 +1,34 @@
 #include "../../Header/Element/ElementService.h"
-#include "../../Header/Element/Bunker/BunkerController.h"
 
-namespace Element {
-	ElementService::ElementService()
-	{
-		bunkerController = new BunkerController();
-	}
+namespace Element
+{
+	ElementService::ElementService() { }
 
-	ElementService::~ElementService()
-	{
-		delete (bunkerController);
-	}
+	ElementService::~ElementService() { Destroy(); }
 
 	void ElementService::Initialize()
 	{
-		bunkerController->Initialize();
+		for (int i = 0; i < bunkerDataList.size(); i++)
+		{
+			Bunker::BunkerController* bunkerController = new Bunker::BunkerController();
+
+			bunkerController->Initialize(bunkerDataList[i]);
+			bunkerList.push_back(bunkerController);
+		}
 	}
 
 	void ElementService::Update()
 	{
-		bunkerController->Update();
+		for (int i = 0; i < bunkerList.size(); i++) bunkerList[i]->Update();
 	}
 
 	void ElementService::Render()
 	{
-		bunkerController->Render();
+		for (int i = 0; i < bunkerList.size(); i++) bunkerList[i]->Render();
+	}
+
+	void ElementService::Destroy()
+	{
+		for (int i = 0; i < bunkerList.size(); i++) delete(bunkerList[i]);
 	}
 }
