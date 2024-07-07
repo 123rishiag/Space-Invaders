@@ -1,39 +1,39 @@
 #include "../../Header/Element/Bunker/BunkerController.h"
 #include "../../Header/Element/Bunker/BunkerView.h"
-#include "../../Header/Element/Bunker/BunkerModel.h"
 
 namespace Element
 {
-	BunkerController::BunkerController()
+	namespace Bunker 
 	{
-		bunkerView = new BunkerView();
-		bunkerModel = new BunkerModel();
-	}
+		BunkerController::BunkerController()
+		{
+			bunkerView = new BunkerView();
+		}
 
-	BunkerController::~BunkerController()
-	{
-		delete (bunkerView);
-		delete (bunkerModel);
-	}
+		BunkerController::~BunkerController()
+		{
+			delete (bunkerView);
+		}
 
-	void BunkerController::Initialize()
-	{
-		bunkerModel->Initialize();
-		bunkerView->Initialize(this); // we will discuss this soon
-	}
+		void BunkerController::Initialize(BunkerData data)
+		{
+			bunkerData = data;
+			bunkerView->Initialize(this); // we will discuss this soon
+		}
 
-	void BunkerController::Update()
-	{
-		bunkerView->Update();
-	}
+		void BunkerController::Update()
+		{
+			bunkerView->Update();
+		}
 
-	void BunkerController::Render()
-	{
-		bunkerView->Render();
-	}
+		void BunkerController::Render()
+		{
+			bunkerView->Render();
+		}
 
-	sf::Vector2f BunkerController::GetBunkerPosition()
-	{
-		return bunkerModel->GetBunkerPosition();
+		sf::Vector2f BunkerController::GetBunkerPosition() const
+		{
+			return bunkerData.position;
+		}
 	}
 }

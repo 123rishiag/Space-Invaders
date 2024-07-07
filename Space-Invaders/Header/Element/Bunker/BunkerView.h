@@ -1,32 +1,35 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace Element {
+namespace Element 
+{
+    namespace Bunker
+    {
+        class BunkerController;
 
-	class BunkerController;
+        class BunkerView {
+        private:
+            const sf::String bunkerTexturePath = "assets/textures/bunker.png";
 
-	class BunkerView {
-    private:
-        const sf::String bunkerTexturePath = "assets/textures/bunker.png";
+            const float bunkerSpriteWidth = 80.f;
+            const float bunkerSpriteHeight = 80.f;
 
-        const float bunkerSpriteWidth = 60.f;
-        const float bunkerSpriteHeight = 60.f;
+            BunkerController* bunkerController;
 
-        BunkerController* bunkerController;
+            sf::RenderWindow* gameWindow;
+            sf::Texture bunkerTexture;
+            sf::Sprite bunkerSprite;
 
-        sf::RenderWindow* gameWindow;
-        sf::Texture bunkerTexture;
-        sf::Sprite bunkerSprite;
+            void InitializeBunkerSprite();
+            void ScaleBunkerSprite();
 
-        void InitializeBunkerSprite();
-        void ScaleBunkerSprite();
+        public:
+            BunkerView();
+            ~BunkerView();
 
-    public:
-        BunkerView();
-        ~BunkerView();
-
-        void Initialize(BunkerController* controller);
-        void Update();
-        void Render();
-	};
+            void Initialize(BunkerController* controller);
+            void Update();
+            void Render();
+        };
+    }
 }
