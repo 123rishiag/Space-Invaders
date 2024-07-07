@@ -2,6 +2,7 @@
 #include "../../Header/Main/GameService.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Graphic/GraphicService.h"
+#include "../../Header/Global/Config.h"
 
 namespace UI
 {
@@ -23,7 +24,7 @@ namespace UI
 
         void MainMenuUIController::InitializeBackgroundImage()
         {   //check if a texture loaded properly
-            if (backgroundTexture.loadFromFile(backgroundTexturePath))
+            if (backgroundTexture.loadFromFile(Config::backgroundTexturePath))
             {   //if it did then set the bg image and scale it
                 backgroundSprite.setTexture(backgroundTexture);
                 ScaleBackgroundImage();
@@ -56,9 +57,9 @@ namespace UI
         // only returns true if all textures are loaded
         bool MainMenuUIController::LoadButtonTexturesFromFile()
         {
-            return playButtonTexture.loadFromFile(playButtonTexturePath) &&
-                instructionsButtonTexture.loadFromFile(instructionsButtonTexturePath) &&
-                quitButtonTexture.loadFromFile(quitButtonTexturePath);
+            return playButtonTexture.loadFromFile(Config::playButtonTexturePath) &&
+                instructionsButtonTexture.loadFromFile(Config::instructionsButtonTexturePath) &&
+                quitButtonTexture.loadFromFile(Config::quitButtonTexturePath);
         }
 
         void MainMenuUIController::SetButtonSprites()

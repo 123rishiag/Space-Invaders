@@ -1,6 +1,7 @@
 #include "../../Header/Element/Bunker/BunkerView.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Element/Bunker/BunkerController.h"
+#include "../../Header/Global/Config.h"
 
 namespace Element
 {
@@ -21,7 +22,7 @@ namespace Element
 
 		void BunkerView::InitializeBunkerSprite()
 		{
-			if (bunkerTexture.loadFromFile(bunkerTexturePath))
+			if (bunkerTexture.loadFromFile(Config::bunkerTexturePath))
 			{
 				bunkerSprite.setTexture(bunkerTexture);
 				ScaleBunkerSprite();

@@ -9,7 +9,6 @@ namespace Player {
     private:
         PlayerController* playerController; // ptr to player controller
 
-        const sf::String playerTexturePath = "assets/textures/player_ship.png";
         const float playerSpriteWidth = 60.f;
         const float playerSpriteHeight = 60.f;
 

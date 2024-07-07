@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\Global\Config.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerController.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerModel.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerView.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Global\Config.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerController.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerModel.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerView.h" />
