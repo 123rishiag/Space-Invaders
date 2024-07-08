@@ -1,17 +1,18 @@
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Main/GameService.h"
+#include "../../header/UI/UIElement/TextView.h" 
 #include "../../Header/UI/MainMenu/MainMenuController.h"
 
 namespace UI
 {
 	using namespace Main;
-	using namespace MainMenu;
+	using namespace UIElement;
 	using namespace Interface;
+	using namespace MainMenu;
 
 	UIService::UIService()
 	{
 		mainMenuController = nullptr;
-
 		CreateControllers();
 	}
 
@@ -27,6 +28,7 @@ namespace UI
 
 	void UIService::Initialize()
 	{
+		TextView::InitializeTextView();
 		InitializeControllers();
 	}
 

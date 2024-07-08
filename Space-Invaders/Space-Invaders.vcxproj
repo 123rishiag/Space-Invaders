@@ -176,6 +176,7 @@
     <ClCompile Include="Source\Time\TimeService.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuController.cpp" />
     <ClCompile Include="Source\UI\UIElement\ImageView.cpp" />
+    <ClCompile Include="Source\UI\UIElement\TextView.cpp" />
     <ClCompile Include="Source\UI\UIElement\UIView.cpp" />
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
@@ -229,6 +230,7 @@
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuController.h" />
     <ClInclude Include="Header\UI\UIElement\ImageView.h" />
+    <ClInclude Include="Header\UI\UIElement\TextView.h" />
     <ClInclude Include="Header\UI\UIElement\UIView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
   </ItemGroup>
