@@ -10,6 +10,7 @@ namespace Global {
     using namespace Enemy;
     using namespace Bullet;
     using namespace Element;
+    using namespace Powerup;
     using namespace UI;
     using namespace Sound;
     using namespace Main;
@@ -24,6 +25,7 @@ namespace Global {
         enemyService = nullptr; // Initialize enemyService to null
         bulletService = nullptr; // Initialize bulletService to null
         elementService = nullptr; // Initialize elementService to null
+        powerupService = nullptr; // Initialize powerupService to null
         uiService = nullptr; // Initialize uiService to null
         soundService = nullptr; // Initialize uiService to null
         CreateServices(); // Call CreateServices to instantiate services
@@ -44,6 +46,7 @@ namespace Global {
         enemyService = new EnemyService(); // Dynamically create a EnemyService instance
         bulletService = new BulletService(); // Dynamically create a bulletService instance
         elementService = new ElementService(); // Dynamically create a ElementService instance
+        powerupService = new PowerupService(); // Dynamically create a PowerupService instance
         uiService = new UIService(); // Dynamically create a UIService instance
         soundService = new SoundService(); // Dynamically create a SoundService instance
     }
@@ -58,6 +61,7 @@ namespace Global {
         delete(enemyService); // Delete the enemyService instance
         delete(bulletService); // Delete the bulletService instance
         delete(elementService); // Delete the elementService instance
+        delete(powerupService); // Delete the powerupService instance
         delete(uiService); // Delete the uiService instance
         delete(soundService); // Delete the soundService instance
     }
@@ -78,6 +82,7 @@ namespace Global {
         enemyService->Initialize(); // Initialize enemy service
         bulletService->Initialize(); // Initialize bullet service
         elementService->Initialize(); // Initialize element service
+        powerupService->Initialize(); // Initialize powerup service
         uiService->Initialize(); // Initialize ui service
         soundService->Initialize(); // Initialize sound service
     }
@@ -93,7 +98,8 @@ namespace Global {
             playerService->Update(); // Update player service
             enemyService->Update(); // Update enemy service
             bulletService->Update(); // Update bullet service
-            elementService->Update(); // Update element service 
+            elementService->Update(); // Update element service
+            powerupService->Update(); // Update powerup service
         }
         uiService->Update(); // Update ui service
     }
@@ -109,7 +115,8 @@ namespace Global {
             playerService->Render(); // Render player service
             enemyService->Render(); // Render enemy service
             bulletService->Render(); // Render bullet service
-            elementService->Render(); // Render element service 
+            elementService->Render(); // Render element service
+            powerupService->Render(); // Render powerup service
         }
         uiService->Render(); // Render ui service
     }
@@ -147,6 +154,10 @@ namespace Global {
     // Retrieve the ElementService instance
     ElementService* ServiceLocator::GetElementService() const {
         return elementService;
+    }
+    // Retrieve the PowerupService instance
+    PowerupService* ServiceLocator::GetPowerupService() const {
+        return powerupService;
     }
     // Retrieve the UIService instance
     UIService* ServiceLocator::GetUIService() const {

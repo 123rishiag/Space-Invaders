@@ -8,6 +8,7 @@
 #include "../Enemy/EnemyService.h"
 #include "../Bullet/BulletService.h"
 #include "../Element/ElementService.h"
+#include "../Powerup/PowerupService.h"
 #include "../UI/UIService.h"
 #include "../Sound/SoundService.h"
 
@@ -27,6 +28,7 @@ namespace Global {
         Enemy::EnemyService* enemyService;
         Bullet::BulletService* bulletService;
         Element::ElementService* elementService;
+        Powerup::PowerupService* powerupService;
         UI::UIService* uiService;
         Sound::SoundService* soundService;
         // ..........................
@@ -62,6 +64,7 @@ namespace Global {
         Enemy::EnemyService* GetEnemyService() const;   // Retrieve the EnemyService instance
         Bullet::BulletService* GetBulletService() const;   // Retrieve the BulletService instance
         Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
+        Powerup::PowerupService* GetPowerupService() const;   // Retrieve the PowerupService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
         Sound::SoundService* GetSoundService() const;   // Retrieve the SoundService instance
 
