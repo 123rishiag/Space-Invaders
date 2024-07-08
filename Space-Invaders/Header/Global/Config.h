@@ -32,7 +32,7 @@ namespace Global
 		static const sf::String menu_button_texture_path;
 
 		static const sf::String bubbleBobbleFontPath;
-		static const sf::String dsIgibFontPath;
+		static const sf::String dsdigibFontPath;
 
 		static const sf::String backgroundMusicPath;
 		static const sf::String buttonClickSoundPath;
