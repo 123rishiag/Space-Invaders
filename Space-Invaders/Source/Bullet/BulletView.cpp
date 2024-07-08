@@ -1,68 +1,62 @@
 #include "../../Header/Bullet/BulletView.h"
-#include "../../Header/Bullet/BulletController.h"
-#include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Global/Config.h"
+#include "../../Header/Bullet/BulletController.h"
 #include "../../Header/Bullet/BulletConfig.h"
 
 namespace Bullet
 {
 	using namespace Global;
+	using namespace UI::UIElement;
 
-	BulletView::BulletView() {  }
+	BulletView::BulletView() { CreateUIElements(); }
 
-	BulletView::~BulletView() { }
+	BulletView::~BulletView() { Destroy(); }
 
 	void BulletView::Initialize(BulletController* controller)
 	{
 		bulletController = controller;
-		gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-		InitializeImage(bulletController->GetBulletType());
+		InitializeImage();
 	}
 
-	void BulletView::InitializeImage(BulletType type)
+	void BulletView::CreateUIElements()
 	{
-		switch (type)
-		{
-		case::Bullet::BulletType::LASER_BULLET:
-			if (bulletTexture.loadFromFile(Config::laserBulletTexturePath))
-			{
-				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
-			}
-			break;
-		case::Bullet::BulletType::FROST_BULLET:
-			if (bulletTexture.loadFromFile(Config::frostBeamTexturePath))
-			{
-				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
-			}
-			break;
-		case::Bullet::BulletType::TORPEDO:
-			if (bulletTexture.loadFromFile(Config::torpedoeTexturePath))
-			{
-				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
-			}
-			break;
-		}
+		bulletImage = new ImageView();
 	}
 
-	void BulletView::ScaleImage()
+
+	void BulletView::InitializeImage()
 	{
-		bulletSprite.setScale(
-			static_cast<float>(bulletSpriteWidth) / bulletSprite.getTexture()->getSize().x,
-			static_cast<float>(bulletSpriteHeight) / bulletSprite.getTexture()->getSize().y
-		);
+		bulletImage->Initialize(GetBulletTexturePath(), bulletSpriteWidth, bulletSpriteHeight, bulletController->GetProjectilePosition());
 	}
 
 	void BulletView::Update()
 	{
-		bulletSprite.setPosition(bulletController->GetProjectilePosition());
+		bulletImage->SetPosition(bulletController->GetProjectilePosition());
+		bulletImage->Update();
 	}
 
 	void BulletView::Render()
 	{
-		gameWindow->draw(bulletSprite);
+		bulletImage->Render();
 	}
 
+	sf::String BulletView::GetBulletTexturePath()
+	{
+		switch (bulletController->GetBulletType())
+		{
+		case::Bullet::BulletType::LASER_BULLET:
+			return Config::laserBulletTexturePath;
+
+		case::Bullet::BulletType::FROST_BULLET:
+			return Config::frostBeamTexturePath;
+
+		case::Bullet::BulletType::TORPEDO:
+			return Config::torpedoeTexturePath;
+		}
+	}
+
+	void BulletView::Destroy()
+	{
+		delete(bulletImage);
+	}
 }

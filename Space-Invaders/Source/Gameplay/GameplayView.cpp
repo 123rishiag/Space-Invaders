@@ -1,44 +1,51 @@
 #include "../../Header/Gameplay/GameplayView.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Graphic/GraphicService.h"
 #include "../../Header/Global/Config.h"
+#include "../../Header/Global/ServiceLocator.h"
 
 namespace Gameplay
 {
 	using namespace Global;
-	using namespace Graphic;
+	using namespace UI::UIElement;
 
-	GameplayView::GameplayView() { }
+	GameplayView::GameplayView() { CreateUIElements(); }
 
-	GameplayView::~GameplayView() { }
+	GameplayView::~GameplayView() { Destroy(); }
 
-	void GameplayView::Initialize() 
-	{ 
+	void GameplayView::Initialize()
+	{
 		gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-		InitializeBackgroundSprite();
+		InitializeImage();
 	}
 
-	void GameplayView::Update() { }
-
-	void GameplayView::Render() 
-	{ 
-		gameWindow->draw(backgroundSprite);
-	}
-
-	void GameplayView::InitializeBackgroundSprite()
+	void GameplayView::CreateUIElements()
 	{
-		if (backgroundTexture.loadFromFile(Config::backgroundTexturePath))
-		{
-			backgroundSprite.setTexture(backgroundTexture);
-			ScaleBackgroundSprite();
-		}
+		backgroundImage = new ImageView();
 	}
 
-	void GameplayView::ScaleBackgroundSprite()
+	void GameplayView::InitializeImage()
 	{
-		backgroundSprite.setScale(
-			static_cast<float>(gameWindow->getSize().x) / backgroundSprite.getTexture()->getSize().x,
-			static_cast<float>(gameWindow->getSize().y) / backgroundSprite.getTexture()->getSize().y
-		);
+		backgroundImage->Initialize(GetBackgroundTexturePath(), gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
+		backgroundImage->SetOriginAtCentre();
+		backgroundImage->SetCentreAlinged();
+	}
+
+	void GameplayView::Update()
+	{
+		backgroundImage->Update();
+	}
+
+	void GameplayView::Render()
+	{
+		backgroundImage->Render();
+	}
+
+	sf::String GameplayView::GetBackgroundTexturePath()
+	{
+		return Config::backgroundTexturePath;
+	}
+
+	void GameplayView::Destroy()
+	{
+		delete(backgroundImage);
 	}
 }

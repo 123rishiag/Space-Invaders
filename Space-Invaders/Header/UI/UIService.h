@@ -24,6 +24,6 @@ namespace UI
 		void Update();
 		void Render();
 
-		void ShowScreen()
+		void ShowScreen();
 	};
 }
