@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/UI/UIElement/ImageView.h"
 
 namespace Powerup
 {
     class PowerupController;
-    enum class PowerupType;
 
     class PowerupView
     {
@@ -12,14 +12,12 @@ namespace Powerup
         const float powerupSpriteWidth = 30.f;
         const float powerupSpriteHeight = 30.f;
 
-        sf::RenderWindow* gameWindow;
-        sf::Texture powerupTexture;
-        sf::Sprite powerupSprite;
-
         PowerupController* powerupController;
+        UI::UIElement::ImageView* powerupImage;
 
-        void InitializeImage(PowerupType powerupType);
-        void ScaleImage();
+        void CreateUIElements();
+        void InitializeImage();
+        sf::String GetPowerupTexturePath();
 
         void Destroy();
 

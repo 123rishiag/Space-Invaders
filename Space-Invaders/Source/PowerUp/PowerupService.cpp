@@ -39,8 +39,8 @@ namespace Powerup
 		case::Powerup::PowerupType::RAPID_FIRE:
 			return new RapidFireController(Powerup::PowerupType::RAPID_FIRE);
 
-		case::Powerup::PowerupType::TRIPPLE_LASER:
-			return new TripleLaserController(Powerup::PowerupType::TRIPPLE_LASER);
+		case::Powerup::PowerupType::TRIPLE_LASER:
+			return new TripleLaserController(Powerup::PowerupType::TRIPLE_LASER);
 
 		case::Powerup::PowerupType::OUTSCAL_BOMB:
 			return new OutscalBombController(Powerup::PowerupType::OUTSCAL_BOMB);

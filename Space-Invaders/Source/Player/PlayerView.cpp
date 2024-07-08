@@ -1,48 +1,51 @@
 #include "../../Header/Player/PlayerView.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Player/PlayerController.h"
 #include "../../Header/Global/Config.h"
+#include "../../Header/Player/PlayerController.h"
 
 namespace Player {
-	using namespace Global;
-	PlayerView::PlayerView() { }
 
-	PlayerView::~PlayerView() { }
+	using namespace Global;
+	using namespace UI::UIElement;
+
+	PlayerView::PlayerView() { CreateUIElements(); }
+
+	PlayerView::~PlayerView() { Destroy(); }
 
 	void PlayerView::Initialize(PlayerController* controller)
 	{
-		playerController = controller; //to later use it for setting position
-		gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-		InitializePlayerSprite();
+		playerController = controller;
+		InitializeImage();
 	}
 
-	void PlayerView::InitializePlayerSprite()
+	void PlayerView::CreateUIElements()
 	{
-		if (playerTexture.loadFromFile(Config::playerTexturePath))
-		{
-			playerSprite.setTexture(playerTexture);
-			ScalePlayerSprite();
-		}
+		playerImage = new ImageView();
 	}
 
-	void PlayerView::ScalePlayerSprite()
+
+	void PlayerView::InitializeImage()
 	{
-		// setScale is an inbuilt method of the sprite class that takes two floats to scale the sprite. it scales the sprite to our desired height
-		playerSprite.setScale(
-			//Here we find the factor to scale our sprites with. Ignore the static_cast for now, we will discuss it later.
-			static_cast<float>(playerSpriteWidth) / playerSprite.getTexture()->getSize().x,
-			static_cast<float>(playerSpriteHeight) / playerSprite.getTexture()->getSize().y
-		);
+		playerImage->Initialize(GetPlayerTexturePath(), playerSpriteWidth, playerSpriteHeight, playerController->GetPlayerPosition());
 	}
 
 	void PlayerView::Update()
 	{
-		//set the updated position before we render
-		playerSprite.setPosition(playerController->GetPlayerPosition());
+		playerImage->SetPosition(playerController->GetPlayerPosition());
+		playerImage->Update();
 	}
 
 	void PlayerView::Render()
 	{
-		gameWindow->draw(playerSprite);
+		playerImage->Render();
+	}
+
+	sf::String PlayerView::GetPlayerTexturePath()
+	{
+		return Config::playerTexturePath;
+	}
+
+	void PlayerView::Destroy()
+	{
+		delete(playerImage);
 	}
 }

@@ -1,50 +1,54 @@
 #include "../../Header/Element/Bunker/BunkerView.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Element/Bunker/BunkerController.h"
 #include "../../Header/Global/Config.h"
+#include "../../Header/Element/Bunker/BunkerController.h"
 
 namespace Element
 {
 	namespace Bunker
 	{
-		using namespace Global;
+		using namespace Global; 
+		using namespace UI::UIElement;
 
-		BunkerView::BunkerView() { }
+		BunkerView::BunkerView() { CreateUIElements(); }
 
-		BunkerView::~BunkerView() { }
+		BunkerView::~BunkerView() { Destroy(); }
 
 		void BunkerView::Initialize(BunkerController* controller)
 		{
 			bunkerController = controller;
-			gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-			InitializeBunkerSprite();
+			InitializeImage();
 		}
 
-		void BunkerView::InitializeBunkerSprite()
+		void BunkerView::CreateUIElements()
 		{
-			if (bunkerTexture.loadFromFile(Config::bunkerTexturePath))
-			{
-				bunkerSprite.setTexture(bunkerTexture);
-				ScaleBunkerSprite();
-			}
+			bunkerImage = new ImageView();
 		}
 
-		void BunkerView::ScaleBunkerSprite()
+
+		void BunkerView::InitializeImage()
 		{
-			bunkerSprite.setScale(
-				static_cast<float>(bunkerSpriteWidth) / bunkerSprite.getTexture()->getSize().x,
-				static_cast<float>(bunkerSpriteHeight) / bunkerSprite.getTexture()->getSize().y
-			);
+			bunkerImage->Initialize(GetBunkerTexturePath(), bunkerSpriteWidth, bunkerSpriteHeight, bunkerController->GetBunkerPosition());
 		}
 
 		void BunkerView::Update()
 		{
-			bunkerSprite.setPosition(bunkerController->GetBunkerPosition());
+			bunkerImage->SetPosition(bunkerController->GetBunkerPosition());
+			bunkerImage->Update();
 		}
 
 		void BunkerView::Render()
 		{
-			gameWindow->draw(bunkerSprite);
+			bunkerImage->Render();
+		}
+
+		sf::String BunkerView::GetBunkerTexturePath()
+		{
+			return Config::bunkerTexturePath;
+		}
+
+		void BunkerView::Destroy()
+		{
+			delete(bunkerImage);
 		}
 	}
 }
