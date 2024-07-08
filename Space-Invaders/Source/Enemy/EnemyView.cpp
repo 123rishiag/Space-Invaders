@@ -33,15 +33,22 @@ namespace Enemy
 				ScaleEnemySprite();
 			}
 			break;
-		case::Enemy::EnemyType::ZAPPER:
-			if (enemyTexture.loadFromFile(Config::zapperTexturePath))
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			if (enemyTexture.loadFromFile(Config::thunderSnakeTexturePath))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();
 			}
 			break;
-		case::Enemy::EnemyType::THUNDER_SNAKE:
-			if (enemyTexture.loadFromFile(Config::thunderSnakeTexturePath))
+		case::Enemy::EnemyType::UFO:
+			if (enemyTexture.loadFromFile(Config::ufoTexturePath))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
+		case::Enemy::EnemyType::ZAPPER:
+			if (enemyTexture.loadFromFile(Config::zapperTexturePath))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();
