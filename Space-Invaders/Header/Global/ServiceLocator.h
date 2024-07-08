@@ -14,7 +14,7 @@
 namespace Global {
 
     // ServiceLocator Class Summary: This class manages access to various services in the application.
-    // include relevant headers files
+    // include relevant s files
     class ServiceLocator
     {
     private:
