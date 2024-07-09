@@ -54,6 +54,7 @@ namespace Global {
         void Initialize(); 			//	Initializes the ServiceLocator.
         void Update(); 				//	Updates all services.
         void Render(); 				//	Renders using the services.
+        void Show(); 				//	Show using the services.
 
         // Methods to Get Specific Services: 
         Graphic::GraphicService* GetGraphicService() const;   // Retrieve the GraphicService instance

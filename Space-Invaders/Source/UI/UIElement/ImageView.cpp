@@ -69,7 +69,7 @@ namespace UI
             imageSprite.setColor(color);
         }
 
-        void ImageView::SetCentreAlinged()
+        void ImageView::SetCentreAligned()
         {
             float xPosition = (gameWindow->getSize().x / 2) - (imageSprite.getGlobalBounds().width / 2);
             float yPosition = imageSprite.getGlobalBounds().getPosition().y;
