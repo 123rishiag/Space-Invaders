@@ -25,7 +25,7 @@ namespace UI
 			virtual void SetRotation(float rotationAngle);
 			virtual void SetOriginAtCentre();
 			virtual void SetImageAlpha(float alpha);
-			virtual void SetCentreAlinged();
+			virtual void SetCentreAligned();
 		};
 	}
 }

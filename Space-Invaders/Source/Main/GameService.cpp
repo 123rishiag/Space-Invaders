@@ -55,6 +55,7 @@ namespace Main {
 	void GameService::ShowMainMenu()
 	{
 		SetGameState(GameState::MAIN_MENU);
+		serviceLocator->Show();
 	}
 
 	bool GameService::IsRunning() const

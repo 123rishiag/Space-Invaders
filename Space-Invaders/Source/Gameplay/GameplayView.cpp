@@ -25,8 +25,6 @@ namespace Gameplay
 	{
 		sf::RenderWindow* gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
 		backgroundImage->Initialize(GetBackgroundTexturePath(), gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
-		backgroundImage->SetOriginAtCentre();
-		backgroundImage->SetCentreAlinged();
 	}
 
 	void GameplayView::Update()

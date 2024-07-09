@@ -46,8 +46,7 @@ namespace UI
         void MainMenuUIController::InitializeBackgroundImage()
         {
             sf::RenderWindow* gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
-
-            backgroundImage->Initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0, 0));
+            backgroundImage->Initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
             backgroundImage->SetImageAlpha(backgroundAlpha);
         }
 
@@ -57,9 +56,9 @@ namespace UI
             instructionsButton->Initialize("Instructions Button", Config::instructionsButtonTexturePath, buttonWidth, buttonHeight, sf::Vector2f(0, instructionsButtonYPosition));
             quitButton->Initialize("Quit Button", Config::quitButtonTexturePath, buttonWidth, buttonHeight, sf::Vector2f(0, quitButtonYPosition));
 
-            playButton->SetCentreAlinged();
-            instructionsButton->SetCentreAlinged();
-            quitButton->SetCentreAlinged();
+            playButton->SetCentreAligned();
+            instructionsButton->SetCentreAligned();
+            quitButton->SetCentreAligned();
         }
 
         void MainMenuUIController::RegisterButtonCallback()

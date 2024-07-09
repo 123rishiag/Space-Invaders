@@ -3,12 +3,15 @@
 
 namespace UI
 {
-	class MainMenuUIController;
+	namespace MainMenu
+	{
+		class MainMenuUIController;
+	}
 
 	class UIService : public Interface::IUIController
 	{
 	private:
-		MainMenuUIController* mainMenuController;
+		MainMenu::MainMenuUIController* mainMenuController;
 
 		IUIController* GetCurrentUIController();
 
