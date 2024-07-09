@@ -23,7 +23,6 @@ namespace UI
 		void Initialize() override;
 		void Update() override;
 		void Render() override;
-
-		void ShowScreen() ;
+		void Show() override;
 	};
 }
