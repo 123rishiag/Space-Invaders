@@ -10,8 +10,6 @@ namespace Gameplay
 
         UI::UIElement::ImageView* backgroundImage;
 
-        sf::RenderWindow* gameWindow;
-
         void CreateUIElements();
         void InitializeImage();
         sf::String GetBackgroundTexturePath();
