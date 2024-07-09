@@ -44,7 +44,7 @@ namespace UI
 		if (uiController) uiController->Render();
 	}
 
-	void UIService::ShowScreen()
+	void UIService::Show()
 	{
 		IUIController* uiController = GetCurrentUIController();
 		if (uiController) uiController->Show();
