@@ -13,7 +13,7 @@ namespace Global
 	const sf::String Config::bunkerTexturePath = "assets/textures/bunker.png";
 
 	const sf::String Config::shieldTexturePath = "assets/textures/shield.png";
-	const sf::String Config::trippleLaserTexturePath = "assets/textures/tripple_laser.png";
+	const sf::String Config::tripleLaserTexturePath = "assets/textures/tripple_laser.png";
 	const sf::String Config::rapidFireTexturePath = "assets/textures/rapid_fire.png";
 	const sf::String Config::outscalBombTexturePath = "assets/textures/outscal_bomb.png";
 
@@ -27,7 +27,7 @@ namespace Global
 	const sf::String Config::menu_button_texture_path = "assets/textures/menu_button.png";
 
 	const sf::String Config::bubbleBobbleFontPath = "assets/fonts/bubbleBobble.ttf";
-	const sf::String Config::dsIgibFontPath = "assets/fonts/DS_DIGIB.ttf";
+	const sf::String Config::dsDigibFontPath = "assets/fonts/DS_DIGIB.ttf";
 
 	const sf::String Config::backgroundMusicPath = "assets/sounds/background_music.mp3";
 	const sf::String Config::buttonClickSoundPath = "assets/sounds/button_click_sound.wav";

@@ -3,15 +3,12 @@
 
 namespace UI
 {
-	namespace MainMenu
-	{
-		class MainMenuUIController;
-	}
+	class MainMenuUIController;
 
 	class UIService : public Interface::IUIController
 	{
 	private:
-		UI::MainMenuUIController* mainMenuController;
+		MainMenuUIController* mainMenuController;
 
 		IUIController* GetCurrentUIController();
 
@@ -23,10 +20,10 @@ namespace UI
 		UIService();
 		~UIService();
 
-		void Initialize();
-		void Update();
-		void Render();
+		void Initialize() override;
+		void Update() override;
+		void Render() override;
 
-		void ShowScreen();
+		void ShowScreen() ;
 	};
 }

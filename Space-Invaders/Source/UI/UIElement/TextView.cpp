@@ -48,7 +48,7 @@ namespace UI
 		void TextView::LoadFont()
 		{
 			fontBubbleBobble.loadFromFile(Config::bubbleBobbleFontPath);
-			fontDsDigib.loadFromFile(Config::dsdigibFontPath);
+			fontDsDigib.loadFromFile(Config::dsDigibFontPath);
 		}
 
 		void TextView::SetText(sf::String textValue)
