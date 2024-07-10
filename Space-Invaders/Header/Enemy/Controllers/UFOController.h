@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Powerup/PowerupConfig.h"
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -18,7 +19,7 @@ namespace Enemy
             Powerup::PowerupType GetRandomPowerupType();
 
         public:
-            UFOController(EnemyType type);
+            UFOController(EnemyType type, Entity::EntityType ownerType);
             ~UFOController();
 
             void Initialize() override;

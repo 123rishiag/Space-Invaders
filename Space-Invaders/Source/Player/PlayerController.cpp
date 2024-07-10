@@ -8,10 +8,10 @@
 namespace Player {
 	using namespace Global;
 	using namespace Event;
-	PlayerController::PlayerController()
+	PlayerController::PlayerController(Entity::EntityType ownerType)
 	{
 		playerView = new PlayerView();
-		playerModel = new PlayerModel();
+		playerModel = new PlayerModel(ownerType);
 	}
 
 	PlayerController::~PlayerController()
@@ -42,6 +42,11 @@ namespace Player {
 		return playerModel->GetPlayerPosition();
 	}
 
+	Entity::EntityType PlayerController::GetEntityType() const
+	{
+		return playerModel->GetEntityType();
+	}
+
 	void PlayerController::ProcessPlayerInput()
 	{
 		EventService* eventService = ServiceLocator::GetInstance()->GetEventService();
@@ -66,7 +71,7 @@ namespace Player {
 	{
 		ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::LASER_BULLET,
 			playerModel->GetPlayerPosition() + playerModel->barrelPositionOffset,
-			Bullet::MovementDirection::UP);
+			Bullet::MovementDirection::UP, playerModel->GetEntityType());
 	}
 
 	void PlayerController::MoveLeft()

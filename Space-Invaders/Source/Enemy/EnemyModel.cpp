@@ -3,9 +3,10 @@
 
 namespace Enemy
 {
-	EnemyModel::EnemyModel(EnemyType type) 
+	EnemyModel::EnemyModel(EnemyType type, Entity::EntityType ownerType)
 	{
 		enemyType = type;
+		bulletOwner = ownerType;
 	}
 
 	EnemyModel::~EnemyModel() { }
@@ -65,6 +66,11 @@ namespace Enemy
 	void EnemyModel::SetMovementDirection(MovementDirection direction)
 	{
 		movementDirection = direction;
+	}
+
+	Entity::EntityType EnemyModel::GetEntityType() const
+	{
+		return bulletOwner;
 	}
 
 }

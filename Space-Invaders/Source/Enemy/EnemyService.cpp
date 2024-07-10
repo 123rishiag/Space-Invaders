@@ -60,7 +60,7 @@ namespace Enemy
 	EnemyController* EnemyService::SpawnEnemy()
 	{
 		// The base class pointer will be pointing to a child class object
-		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType());
+		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType(), Entity::EntityType::ENEMY);
 
 		enemyController->Initialize();
 		enemyList.push_back(enemyController);
@@ -88,18 +88,18 @@ namespace Enemy
 		return static_cast<Enemy::EnemyType>(randomType); //cast int to EnemyType enum class
 	}
 
-	EnemyController* EnemyService::CreateEnemy(EnemyType enemyType) const
+	EnemyController* EnemyService::CreateEnemy(EnemyType enemyType, Entity::EntityType ownerType) const
 	{
 		switch (enemyType)
 		{
 		case::Enemy::EnemyType::SUBZERO:
-			return new SubzeroController(Enemy::EnemyType::SUBZERO);
+			return new SubzeroController(Enemy::EnemyType::SUBZERO, ownerType);
 		case::Enemy::EnemyType::THUNDER_SNAKE:
-			return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE);
+			return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE, ownerType);
 		case::Enemy::EnemyType::UFO:
-			return new UFOController(Enemy::EnemyType::UFO);
+			return new UFOController(Enemy::EnemyType::UFO, ownerType);
 		case::Enemy::EnemyType::ZAPPER:
-			return new ZapperController(Enemy::EnemyType::ZAPPER);
+			return new ZapperController(Enemy::EnemyType::ZAPPER, ownerType);
 		}
 	}
 

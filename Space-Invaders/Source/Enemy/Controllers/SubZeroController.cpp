@@ -10,7 +10,7 @@ namespace Enemy
 
 	namespace Controller
 	{
-		SubzeroController::SubzeroController(EnemyType type) : EnemyController(type) { }
+		SubzeroController::SubzeroController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
 
 		SubzeroController::~SubzeroController() { }
 
@@ -26,7 +26,7 @@ namespace Enemy
 			// we spawn the bullet and pass the needed parameters
 			ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::TORPEDO,
 				enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
-				Bullet::MovementDirection::DOWN);
+				Bullet::MovementDirection::DOWN, enemyModel->GetEntityType());
 		}
 
 		void SubzeroController::Move()

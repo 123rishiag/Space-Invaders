@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -17,8 +18,10 @@ namespace Enemy
         EnemyType enemyType;
         EnemyState enemyState;
 
+        Entity::EntityType bulletOwner;
+
     public:
-        EnemyModel(EnemyType type);
+        EnemyModel(EnemyType type, Entity::EntityType ownerType);
         ~EnemyModel();
 
         //const data related to movement and bounds
@@ -45,6 +48,8 @@ namespace Enemy
 
         MovementDirection GetMovementDirection() const;
         void SetMovementDirection(MovementDirection direction);
+
+        Entity::EntityType GetEntityType() const;
 
     };
 }

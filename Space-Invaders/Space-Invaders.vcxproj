@@ -192,6 +192,7 @@
     <ClInclude Include="Header\Bullet\Controllers\TorpedoController.h" />
     <ClInclude Include="Header\Collectible\ICollectible.h" />
     <ClInclude Include="Header\Enemy\Controllers\UFOController.h" />
+    <ClInclude Include="Header\Entity\EntityConfig.h" />
     <ClInclude Include="Header\Global\Config.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerController.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerModel.h" />

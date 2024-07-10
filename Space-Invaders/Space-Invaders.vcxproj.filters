@@ -48,9 +48,6 @@
     <ClCompile Include="Source\UI\UIService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI\MainMenu\MainMenuController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Enemy\EnemyService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -156,6 +153,12 @@
     <ClCompile Include="Source\UI\UIElement\TextView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement\ButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -186,9 +189,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\UI\UIService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\UI\MainMenu\MainMenuController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyService.h">
@@ -312,6 +312,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\UI\UIElement\TextView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\ButtonView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Entity\EntityConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

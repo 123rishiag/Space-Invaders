@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Player {
     enum class PlayerState;
@@ -18,7 +19,7 @@ namespace Player {
         void MoveRight();
 
     public:
-        PlayerController();
+        PlayerController(Entity::EntityType ownerType);
         ~PlayerController();
 
         void Initialize();
@@ -26,5 +27,8 @@ namespace Player {
         void Render();
 
         sf::Vector2f GetPlayerPosition() const;
+
+        Entity::EntityType GetEntityType() const;
+
     };
 }
