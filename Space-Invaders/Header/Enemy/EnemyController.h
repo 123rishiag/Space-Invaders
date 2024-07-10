@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -29,7 +30,7 @@ namespace Enemy
         void HandleOutOfBounds();
 
     public:
-        EnemyController(EnemyType type);
+        EnemyController(EnemyType type, Entity::EntityType ownerType);
         virtual ~EnemyController();
 
         virtual void Initialize();
@@ -40,5 +41,7 @@ namespace Enemy
         EnemyState GetEnemyState() const;
 
         sf::Vector2f GetEnemyPosition();
+
+        Entity::EntityType GetEntityType() const;
     };
 }

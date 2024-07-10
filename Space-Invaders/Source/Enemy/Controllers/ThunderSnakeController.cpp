@@ -10,7 +10,7 @@ namespace Enemy
 
     namespace Controller
     {
-        ThunderSnakeController::ThunderSnakeController(EnemyType type) : EnemyController(type) { }
+        ThunderSnakeController::ThunderSnakeController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
 
         ThunderSnakeController::~ThunderSnakeController() { }
 
@@ -25,7 +25,7 @@ namespace Enemy
             // we spawn the bullet and pass the needed parameters
             ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::FROST_BULLET,
                 enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
-                Bullet::MovementDirection::DOWN);
+                Bullet::MovementDirection::DOWN, enemyModel->GetEntityType());
         }
 
         // Method for moving the Thunder Snake enemy

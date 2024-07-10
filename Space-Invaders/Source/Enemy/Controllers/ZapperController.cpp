@@ -11,7 +11,7 @@ namespace Enemy
 
     namespace Controller
     {
-        ZapperController::ZapperController(EnemyType type) : EnemyController(type) { }
+        ZapperController::ZapperController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
 
         ZapperController::~ZapperController() { }
 
@@ -26,7 +26,7 @@ namespace Enemy
             // we spawn the bullet and pass the needed parameters
             ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::LASER_BULLET,
                 enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
-                Bullet::MovementDirection::DOWN);
+                Bullet::MovementDirection::DOWN, enemyModel->GetEntityType());
         }
 
         // Method for moving the Zapper enemy

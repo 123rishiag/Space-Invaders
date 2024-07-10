@@ -7,10 +7,10 @@ namespace Enemy
 {
 	using namespace Global;
 
-	EnemyController::EnemyController(EnemyType type)
+	EnemyController::EnemyController(EnemyType type, Entity::EntityType ownerType)
 	{
 		enemyView = new EnemyView();
-		enemyModel = new EnemyModel(type);
+		enemyModel = new EnemyModel(type, ownerType);
 	}
 
 	EnemyController::~EnemyController()
@@ -97,4 +97,10 @@ namespace Enemy
 	{
 		return enemyModel->GetEnemyPosition();
 	}
+
+	Entity::EntityType EnemyController::GetEntityType() const
+	{
+		return enemyModel->GetEntityType();
+	}
+
 }

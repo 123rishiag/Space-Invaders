@@ -1,7 +1,9 @@
 #include "../../Header/Player/PlayerModel.h"
 
 namespace Player {
-	PlayerModel::PlayerModel() { }
+	PlayerModel::PlayerModel(Entity::EntityType ownerType) { 
+		bulletOwner = ownerType;
+	}
 
 	PlayerModel::~PlayerModel() { }
 
@@ -27,4 +29,10 @@ namespace Player {
 	PlayerState PlayerModel::GetPlayerState() const { return playerState; }
 
 	void PlayerModel::SetPlayerState(PlayerState state) { playerState = state; }
+
+	Entity::EntityType PlayerModel::GetEntityType() const
+	{
+		return bulletOwner;
+	}
+
 }

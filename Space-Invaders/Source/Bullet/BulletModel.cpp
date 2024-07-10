@@ -2,9 +2,10 @@
 
 namespace Bullet
 {
-	BulletModel::BulletModel(BulletType type)
+	BulletModel::BulletModel(BulletType type, Entity::EntityType ownerType)
 	{
 		bulletType = type;
+		bulletOwner = ownerType;
 	}
 
 	BulletModel::~BulletModel() { }
@@ -25,7 +26,7 @@ namespace Bullet
 		bulletPosition = position;
 	}
 
-	BulletType BulletModel::GetBulletType()
+	BulletType BulletModel::GetBulletType() const
 	{
 		return bulletType;
 	}
@@ -53,5 +54,15 @@ namespace Bullet
 	void BulletModel::SetMovementSpeed(float speed)
 	{
 		movementSpeed = speed;
+	}
+
+	Entity::EntityType BulletModel::GetEntityType() const
+	{
+		return bulletOwner;
+	}
+
+	void BulletModel::SetEntityType(Entity::EntityType ownerType)
+	{
+		bulletOwner = ownerType;
 	}
 }

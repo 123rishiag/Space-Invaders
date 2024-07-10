@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Header/Enemy/EnemyController.h"
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -18,7 +19,7 @@ namespace Enemy
             void MoveRight();
 
         public:
-            ThunderSnakeController(EnemyType type);
+            ThunderSnakeController(EnemyType type, Entity::EntityType ownerType);
             ~ThunderSnakeController();
 
             void Initialize() override;

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -15,7 +16,7 @@ namespace Enemy
 		void UpdateSpawnTimer();
 		void ProcessEnemySpawn();
 		EnemyType GetRandomEnemyType() const;
-		EnemyController* CreateEnemy(EnemyType enemyType) const;
+		EnemyController* CreateEnemy(EnemyType enemyType, Entity::EntityType ownerType) const;
 		void Destroy(); // function to delete enemy
 
 	public:
