@@ -27,5 +27,7 @@ namespace Player {
         void Initialize(PlayerController* controller); // we pass a pointer of type controller because we need to use this in the view later.
         void Update();
         void Render();
+
+        const sf::Sprite& GetPlayerSprite();
     };
 }
