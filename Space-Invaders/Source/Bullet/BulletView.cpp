@@ -45,14 +45,19 @@ namespace Bullet
 		switch (bulletController->GetBulletType())
 		{
 		case::Bullet::BulletType::LASER_BULLET:
-			return Config::laserBulletTexturePath;
+			return BulletConfig::laserBulletTexturePath;
 
 		case::Bullet::BulletType::FROST_BULLET:
-			return Config::frostBeamTexturePath;
+			return BulletConfig::frostBeamTexturePath;
 
 		case::Bullet::BulletType::TORPEDO:
-			return Config::torpedoeTexturePath;
+			return BulletConfig::torpedoeTexturePath;
 		}
+	}
+
+	const sf::Sprite& BulletView::GetBulletSprite() const
+	{
+		return bulletImage->GetSprite();
 	}
 
 	void BulletView::Destroy()

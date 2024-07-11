@@ -293,7 +293,7 @@ namespace Player {
 
 	void PlayerController::FireBullet(sf::Vector2f position)
 	{
-		ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::LASER_BULLET,
-			position, Bullet::MovementDirection::UP, playerModel->GetEntityType());
+		ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::LASER_BULLET, playerModel->GetEntityType(),
+			position, Bullet::MovementDirection::UP);
 	}
 }

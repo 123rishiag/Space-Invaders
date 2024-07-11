@@ -24,9 +24,9 @@ namespace Enemy
         void ZapperController::FireBullet()
         {
             // we spawn the bullet and pass the needed parameters
-            ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::LASER_BULLET,
-                enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
-                Bullet::MovementDirection::DOWN, enemyModel->GetEntityType());
+            ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::LASER_BULLET, 
+                enemyModel->GetEntityType(), enemyModel->GetEnemyPosition() + enemyModel->barrelPositionOffset,
+                Bullet::MovementDirection::DOWN);
         }
 
         // Method for moving the Zapper enemy
