@@ -21,7 +21,7 @@ namespace Enemy
         Entity::EntityType bulletOwner;
 
     public:
-        EnemyModel(EnemyType type, Entity::EntityType ownerType);
+        EnemyModel(EnemyType type);
         ~EnemyModel();
 
         //const data related to movement and bounds

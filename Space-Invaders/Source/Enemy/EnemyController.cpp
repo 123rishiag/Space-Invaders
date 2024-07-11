@@ -1,16 +1,28 @@
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyModel.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Entity/EntityConfig.h"
+#include "../../Header/Bullet/BulletController.h"
+#include "../../Header/Player/PlayerController.h"
+#include "../../Header/Sound/SoundService.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Time;
+	using namespace Bullet;
+	using namespace Collision;
+	using namespace Entity;
+	using namespace Player;
+	using namespace Sound;
 
-	EnemyController::EnemyController(EnemyType type, Entity::EntityType ownerType)
+	EnemyController::EnemyController(EnemyType type)
 	{
 		enemyView = new EnemyView();
-		enemyModel = new EnemyModel(type, ownerType);
+		enemyModel = new EnemyModel(type);
 	}
 
 	EnemyController::~EnemyController()
@@ -32,7 +44,6 @@ namespace Enemy
 		UpdateFireTimer();
 		ProcessBulletFire();
 		enemyView->Update();
-		HandleOutOfBounds();
 	}
 
 	void EnemyController::Render()
@@ -70,19 +81,6 @@ namespace Enemy
 		return sf::Vector2f(xPosition, yPosition);
 	}
 
-	void EnemyController::HandleOutOfBounds()
-	{
-		sf::Vector2f enemyPosition = GetEnemyPosition();
-		sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow()->getSize();
-
-		// Destroy the enemy if it goes out of bounds.
-		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
-			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
-		{
-			ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
-		}
-	}
-
 	EnemyType EnemyController::GetEnemyType() const
 	{
 		return enemyModel->GetEnemyType();
@@ -98,9 +96,31 @@ namespace Enemy
 		return enemyModel->GetEnemyPosition();
 	}
 
-	Entity::EntityType EnemyController::GetEntityType() const
+	const sf::Sprite& EnemyController::GetColliderSprite()
 	{
-		return enemyModel->GetEntityType();
+		return enemyView->GetEnemySprite();
+	}
+
+	void EnemyController::OnCollision(ICollider* otherCollider)
+	{
+		BulletController* bulletController = dynamic_cast<BulletController*>(otherCollider);
+		if (bulletController && bulletController->GetEntityType() != EntityType::ENEMY)
+		{
+			Destroy();
+			return;
+		}
+
+		PlayerController* playerController = dynamic_cast<PlayerController*>(otherCollider);
+		if (playerController)
+		{
+			Destroy();
+			return;
+		}
+	}
+
+	void EnemyController::Destroy()
+	{
+		ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
 	}
 
 }

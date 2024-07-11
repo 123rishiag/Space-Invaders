@@ -1,6 +1,5 @@
 #pragma once
 #include "../../Header/Enemy/EnemyController.h"
-#include "../../Header/Entity/EntityConfig.h"
 
 namespace Enemy
 {
@@ -17,7 +16,7 @@ namespace Enemy
             void MoveDown();
 
         public:
-            SubzeroController(EnemyType type, Entity::EntityType ownerType);
+            SubzeroController(EnemyType type);
             ~SubzeroController();
 
             void Initialize() override;

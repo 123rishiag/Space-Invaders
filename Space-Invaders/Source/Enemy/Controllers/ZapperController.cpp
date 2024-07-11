@@ -11,7 +11,7 @@ namespace Enemy
 
     namespace Controller
     {
-        ZapperController::ZapperController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
+        ZapperController::ZapperController(EnemyType type) : EnemyController(type) { }
 
         ZapperController::~ZapperController() { }
 

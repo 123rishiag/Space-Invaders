@@ -10,7 +10,7 @@ namespace Enemy
 
 	namespace Controller
 	{
-		SubzeroController::SubzeroController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
+		SubzeroController::SubzeroController(EnemyType type) : EnemyController(type) { }
 
 		SubzeroController::~SubzeroController() { }
 

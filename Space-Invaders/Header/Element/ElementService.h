@@ -29,5 +29,7 @@ namespace Element
 		void Initialize();
 		void Update();
 		void Render();
+
+		void Reset();
 	};
 }

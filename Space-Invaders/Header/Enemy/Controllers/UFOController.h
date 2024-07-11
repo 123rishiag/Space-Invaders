@@ -1,7 +1,7 @@
 #pragma once
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Powerup/PowerupConfig.h"
-#include "../../Header/Entity/EntityConfig.h"
+#include "../../Header/Collision/ICollider.h"
 
 namespace Enemy
 {
@@ -19,10 +19,12 @@ namespace Enemy
             Powerup::PowerupType GetRandomPowerupType();
 
         public:
-            UFOController(EnemyType type, Entity::EntityType ownerType);
+            UFOController(EnemyType type);
             ~UFOController();
 
             void Initialize() override;
+
+            void OnCollision(ICollider* otherCollider) override;
         };
     }
 }
