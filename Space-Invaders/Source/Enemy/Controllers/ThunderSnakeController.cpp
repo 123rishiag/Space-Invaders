@@ -10,7 +10,7 @@ namespace Enemy
 
     namespace Controller
     {
-        ThunderSnakeController::ThunderSnakeController(EnemyType type, Entity::EntityType ownerType) : EnemyController(type, ownerType) { }
+        ThunderSnakeController::ThunderSnakeController(EnemyType type) : EnemyController(type) { }
 
         ThunderSnakeController::~ThunderSnakeController() { }
 

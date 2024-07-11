@@ -29,5 +29,7 @@ namespace Enemy
         void Initialize(EnemyController* controller);
         void Update();
         void Render();
+
+        const sf::Sprite& GetEnemySprite() const;
     };
 }

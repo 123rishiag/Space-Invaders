@@ -3,10 +3,10 @@
 
 namespace Enemy
 {
-	EnemyModel::EnemyModel(EnemyType type, Entity::EntityType ownerType)
+	EnemyModel::EnemyModel(EnemyType type)
 	{
 		enemyType = type;
-		bulletOwner = ownerType;
+		bulletOwner = Entity::EntityType::ENEMY;
 	}
 
 	EnemyModel::~EnemyModel() { }
