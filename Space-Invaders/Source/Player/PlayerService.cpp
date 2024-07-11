@@ -4,7 +4,7 @@
 namespace Player {
 	PlayerService::PlayerService()
 	{
-		playerController = new PlayerController(Entity::EntityType::PLAYER);
+		playerController = new PlayerController();
 	}
 
 	PlayerService::~PlayerService()
@@ -25,5 +25,25 @@ namespace Player {
 	void PlayerService::Render()
 	{
 		playerController->Render();
+	}
+
+	void PlayerService::EnableShield()
+	{
+		playerController->EnableShield();
+	}
+
+	void PlayerService::EnableRapidFire()
+	{
+		playerController->EnableRapidFire();
+	}
+
+	void PlayerService::EnableTripleLaser()
+	{
+		playerController->EnableTripleLaser();
+	}
+
+	void PlayerService::Reset()
+	{
+		playerController->Reset();
 	}
 }

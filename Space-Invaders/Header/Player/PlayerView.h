@@ -28,6 +28,6 @@ namespace Player {
         void Update();
         void Render();
 
-        const sf::Sprite& GetPlayerSprite();
+        const sf::Sprite& GetPlayerSprite() const;
     };
 }

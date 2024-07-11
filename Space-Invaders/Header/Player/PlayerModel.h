@@ -52,7 +52,7 @@ namespace Player {
 
         const float playerMovementSpeed = 350.0f;
 
-        PlayerModel(Entity::EntityType ownerType);
+        PlayerModel();
         ~PlayerModel();
 
         void Initialize();

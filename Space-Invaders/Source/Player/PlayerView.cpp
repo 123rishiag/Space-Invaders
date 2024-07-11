@@ -44,6 +44,11 @@ namespace Player {
 		return Config::playerTexturePath;
 	}
 
+	const sf::Sprite& PlayerView::GetPlayerSprite() const
+	{
+		return playerImage->GetSprite();
+	}
+
 	void PlayerView::Destroy()
 	{
 		delete(playerImage);

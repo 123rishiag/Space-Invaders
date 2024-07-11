@@ -46,7 +46,7 @@ namespace Player {
         void DisableTripleLaser();
 
     public:
-        PlayerController(Entity::EntityType ownerType);
+        PlayerController();
         ~PlayerController();
 
         void Initialize();
@@ -60,10 +60,11 @@ namespace Player {
         void EnableTripleLaser();
 
         sf::Vector2f GetPlayerPosition() const;
+        int GetPlayerScore() const;
         PlayerState GetPlayerState() const;
         Entity::EntityType GetEntityType() const;
-
         const sf::Sprite& GetColliderSprite() override;
+
         void OnCollision(ICollider* otherCollider) override;
 
     };
