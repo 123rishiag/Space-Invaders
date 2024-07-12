@@ -2,7 +2,7 @@
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 #include "../../Header/Element/Bunker/BunkerController.h"
-#include "../../Header/Element/Bunker/BunkerModel.h"
+#include "../../Header/Element/Bunker/BunkerData.h"
 
 namespace Element
 {
@@ -19,6 +19,10 @@ namespace Element
 																Bunker::BunkerData(sf::Vector2f(1730.0f, 800.f)) };
 
 		std::vector<Bunker::BunkerController*> bunkerList;
+		std::vector<Bunker::BunkerController*> flaggedBunkerList;
+
+		void SpawnBunkers();
+		void DestroyFlaggedBunkers();
 
 		void Destroy();
 
@@ -31,5 +35,7 @@ namespace Element
 		void Render();
 
 		void Reset();
+
+		void DestroyBunker(Bunker::BunkerController* bunkerController);
 	};
 }

@@ -31,7 +31,8 @@ namespace Bullet
 		void Update();
 		void Render();
 
-		BulletController* SpawnBullet(BulletType bulletType, Entity::EntityType ownerType, sf::Vector2f position, MovementDirection direction);
+		BulletController* SpawnBullet(BulletType bulletType, Entity::EntityType ownerType, 
+			sf::Vector2f position, MovementDirection direction);
 		void DestroyBullet(BulletController* bulletController);
 
 		void Reset();

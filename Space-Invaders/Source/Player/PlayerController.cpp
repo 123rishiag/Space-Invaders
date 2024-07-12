@@ -7,6 +7,7 @@
 #include "../../header/Bullet/BulletController.h"
 #include "../../header/Enemy/EnemyController.h"
 #include "../../header/Powerup/PowerupController.h"
+#include<iostream>
 // #include<algorithm>
 
 namespace Player {
@@ -64,54 +65,6 @@ namespace Player {
 	void PlayerController::Reset()
 	{
 		playerModel->Reset();
-	}
-
-	bool PlayerController::ProcessBulletCollision(ICollider* otherCollider)
-	{
-		if (playerModel->IsShieldEnabled())
-			return false;
-
-		BulletController* bulletController = dynamic_cast<BulletController*>(otherCollider);
-
-		if (bulletController && bulletController->GetEntityType() != EntityType::PLAYER)
-		{
-			if (bulletController->GetBulletType() == BulletType::FROST_BULLET)
-			{
-				FreezePlayer();
-				playerModel->elapsedFreezeDuration = playerModel->freezeDuration;
-			}
-			else
-			{
-				DecreasePlayerLive();
-			}
-			return true;
-		}
-
-		return false;
-	}
-
-	bool PlayerController::ProcessEnemyCollision(ICollider* otherCollider)
-	{
-		if (playerModel->IsShieldEnabled())
-			return false;
-
-		EnemyController* enemyController = dynamic_cast<EnemyController*>(otherCollider);
-		if (enemyController)
-		{
-			DecreasePlayerLive();
-			return true;
-		}
-		return false;
-	}
-
-	bool PlayerController::ProcessPowerupCollision(ICollider* otherCollider)
-	{
-		PowerupController* powerupController = dynamic_cast<PowerupController*>(otherCollider);
-		if (powerupController)
-		{
-			return true;
-		}
-		return false;
 	}
 
 	void PlayerController::UpdatePowerupDuration()
@@ -205,13 +158,51 @@ namespace Player {
 
 	void PlayerController::OnCollision(ICollider* otherCollider)
 	{
-		if (ProcessPowerupCollision(otherCollider))
-			return;
-
-		if (ProcessBulletCollision(otherCollider))
-			return;
-
+		ProcessPowerupCollision(otherCollider);
+		ProcessBulletCollision(otherCollider);
 		ProcessEnemyCollision(otherCollider);
+	}
+
+	void PlayerController::ProcessBulletCollision(ICollider* otherCollider)
+	{
+		if (playerModel->IsShieldEnabled())
+			return;
+
+		BulletController* bulletController = dynamic_cast<BulletController*>(otherCollider);
+
+		if (bulletController && bulletController->GetEntityType() != EntityType::PLAYER)
+		{
+			BulletController* bulletController = dynamic_cast<BulletController*>(otherCollider);
+			if (bulletController->GetBulletType() == BulletType::FROST_BULLET)
+			{
+				FreezePlayer();
+			}
+			else
+			{
+				DecreasePlayerLive();
+			}
+		}
+	}
+
+	void PlayerController::ProcessEnemyCollision(ICollider* otherCollider)
+	{
+		if (playerModel->IsShieldEnabled())
+			return;
+
+		EnemyController* enemyController = dynamic_cast<EnemyController*>(otherCollider);
+		if (enemyController)
+		{
+			DecreasePlayerLive();
+		}
+	}
+
+	void PlayerController::ProcessPowerupCollision(ICollider* otherCollider)
+	{
+		PowerupController* powerupController = dynamic_cast<PowerupController*>(otherCollider);
+		if (powerupController)
+		{
+			return;
+		}
 	}
 
 	void PlayerController::ProcessPlayerInput()
@@ -230,7 +221,7 @@ namespace Player {
 
 		if (eventService->PressedLeftMouseButton())
 		{
-			FireBullet();
+			ProcessBulletFire();
 		}
 	}
 
@@ -272,6 +263,7 @@ namespace Player {
 
 	void PlayerController::FreezePlayer()
 	{
+		playerModel->elapsedFreezeDuration = playerModel->freezeDuration;
 		playerModel->SetPlayerState(PlayerState::FROZEN);
 	}
 

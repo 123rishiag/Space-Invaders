@@ -40,6 +40,9 @@ namespace Bullet
         BulletType GetBulletType();
         Entity::EntityType GetEntityType() const;
 
+        float GetMovementSpeed();
+        void SetMovementSpeed(float speed);
+
         const sf::Sprite& GetColliderSprite() override;
         void OnCollision(ICollider* otherCollider) override;
     };
