@@ -9,6 +9,7 @@
 #include "../Bullet/BulletService.h"
 #include "../Element/ElementService.h"
 #include "../Powerup/PowerupService.h"
+#include "../Collision/CollisionService.h"
 #include "../UI/UIService.h"
 #include "../Sound/SoundService.h"
 
@@ -29,6 +30,7 @@ namespace Global {
         Bullet::BulletService* bulletService;
         Element::ElementService* elementService;
         Powerup::PowerupService* powerupService;
+        Collision::CollisionService* collisionService;
         UI::UIService* uiService;
         Sound::SoundService* soundService;
         // ..........................
@@ -66,6 +68,7 @@ namespace Global {
         Bullet::BulletService* GetBulletService() const;   // Retrieve the BulletService instance
         Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
         Powerup::PowerupService* GetPowerupService() const;   // Retrieve the PowerupService instance
+        Collision::CollisionService* GetCollisionService() const;   // Retrieve the CollisionService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
         Sound::SoundService* GetSoundService() const;   // Retrieve the SoundService instance
 

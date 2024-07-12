@@ -8,10 +8,16 @@ namespace UI
 		class MainMenuUIController;
 	}
 
+	namespace GameplayUI
+	{
+		class GameplayUIController;
+	}
+
 	class UIService : public Interface::IUIController
 	{
 	private:
 		MainMenu::MainMenuUIController* mainMenuController;
+		GameplayUI::GameplayUIController* gameplayUIController;
 
 		IUIController* GetCurrentUIController();
 

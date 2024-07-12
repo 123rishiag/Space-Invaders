@@ -42,6 +42,11 @@ namespace Player {
 		playerController->EnableTripleLaser();
 	}
 
+	void PlayerService::IncreaseEnemiesKilled(int val)
+	{
+		playerController->IncreaseEnemiesKilled(val);
+	}
+
 	void PlayerService::Reset()
 	{
 		playerController->Reset();

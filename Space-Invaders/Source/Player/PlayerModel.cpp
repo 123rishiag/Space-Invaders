@@ -1,6 +1,11 @@
 #include "../../Header/Player/PlayerModel.h"
 
 namespace Player {
+
+	//forward declare
+	int PlayerModel::playerLives;
+	int PlayerModel::enemiesKilled;
+
 	PlayerModel::PlayerModel() { 
 		bulletOwner = Entity::EntityType::PLAYER;
 	}
@@ -12,7 +17,10 @@ namespace Player {
 	{
 		playerState = PlayerState::ALIVE;
 		playerPosition = initialPlayerPosition;
-		playerScore = 0;
+
+		playerLives = maxPlayerLives;
+		enemiesKilled = 0;
+
 		bShield = false;
 		bRapidFire = false;
 		bTripleLaser = false;
@@ -20,8 +28,6 @@ namespace Player {
 
 	sf::Vector2f PlayerModel::GetPlayerPosition() const { return playerPosition; }
 	void PlayerModel::SetPlayerPosition(sf::Vector2f position) { playerPosition = position; }
-	int PlayerModel::GetPlayerScore() const { return playerScore; }
-	void PlayerModel::SetPlayerScore(int score) { playerScore = score; }
 	float PlayerModel::GetPlayerMoveSpeed() const { return playerMovementSpeed; }
 	PlayerState PlayerModel::GetPlayerState() const { return playerState; }
 	void PlayerModel::SetPlayerState(PlayerState state) { playerState = state; }
