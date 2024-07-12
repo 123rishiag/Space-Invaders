@@ -1,7 +1,6 @@
 #include "../../Header/Player/PlayerController.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Event/EventService.h"
-#include "../../Header/Player/PlayerModel.h"
 #include "../../Header/Player/PlayerView.h"
 #include "../../header/Bullet/BulletConfig.h"
 #include "../../header/Entity/EntityConfig.h"
@@ -78,10 +77,13 @@ namespace Player {
 		{
 			if (bulletController->GetBulletType() == BulletType::FROST_BULLET)
 			{
-				playerModel->SetPlayerState(PlayerState::FROZEN);
+				FreezePlayer();
 				playerModel->elapsedFreezeDuration = playerModel->freezeDuration;
 			}
-			else ServiceLocator::GetInstance()->GetGameplayService()->Restart();
+			else
+			{
+				DecreasePlayerLive();
+			}
 			return true;
 		}
 
@@ -96,7 +98,7 @@ namespace Player {
 		EnemyController* enemyController = dynamic_cast<EnemyController*>(otherCollider);
 		if (enemyController)
 		{
-			ServiceLocator::GetInstance()->GetGameplayService()->Restart();
+			DecreasePlayerLive();
 			return true;
 		}
 		return false;
@@ -172,14 +174,18 @@ namespace Player {
 		playerModel->SetTripleFireState(false);
 	}
 
+	void PlayerController::DecreasePlayerLive()
+	{
+		PlayerModel::playerLives -= 1;
+		if (PlayerModel::playerLives <= 0)
+		{
+			ServiceLocator::GetInstance()->GetGameplayService()->Restart();
+		}
+	}
+
 	sf::Vector2f PlayerController::GetPlayerPosition() const
 	{
 		return playerModel->GetPlayerPosition();
-	}
-
-	int PlayerController::GetPlayerScore() const
-	{
-		return playerModel->GetPlayerScore();
 	}
 
 	PlayerState PlayerController::GetPlayerState() const
@@ -262,6 +268,11 @@ namespace Player {
 			if (playerModel->elapsedFreezeDuration <= 0)
 				playerModel->SetPlayerState(PlayerState::ALIVE);
 		}
+	}
+
+	void PlayerController::FreezePlayer()
+	{
+		playerModel->SetPlayerState(PlayerState::FROZEN);
 	}
 
 	void PlayerController::ProcessBulletFire()

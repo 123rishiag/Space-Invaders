@@ -22,6 +22,8 @@ namespace Player {
 		void EnableRapidFire();
 		void EnableTripleLaser();
 
+		void IncreaseEnemiesKilled(int val);
+
 		void Reset();
 	};
 }

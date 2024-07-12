@@ -27,6 +27,10 @@ namespace Element
 		for (int i = 0; i < bunkerList.size(); i++) bunkerList[i]->Render();
 	}
 
+	void ElementService::Reset()
+	{
+	}
+
 	void ElementService::Destroy()
 	{
 		for (int i = 0; i < bunkerList.size(); i++) delete(bunkerList[i]);
