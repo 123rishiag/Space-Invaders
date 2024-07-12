@@ -105,7 +105,7 @@
     <ClCompile Include="Source\Element\Bunker\BunkerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Element\Bunker\BunkerModel.cpp">
+    <ClCompile Include="Source\Element\Bunker\BunkerData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Element\Bunker\BunkerView.cpp">
@@ -266,7 +266,7 @@
     <ClInclude Include="Header\Element\Bunker\BunkerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Element\Bunker\BunkerModel.h">
+    <ClInclude Include="Header\Element\Bunker\BunkerData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Element\Bunker\BunkerView.h">

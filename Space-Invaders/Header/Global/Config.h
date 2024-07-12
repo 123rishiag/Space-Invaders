@@ -14,6 +14,7 @@ namespace Global
 		static const sf::String zapperTexturePath;
 		static const sf::String thunderSnakeTexturePath;
 		static const sf::String ufoTexturePath;
+
 		static const sf::String bunkerTexturePath;
 
 		static const sf::String shieldTexturePath;

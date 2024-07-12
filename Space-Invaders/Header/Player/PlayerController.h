@@ -12,14 +12,6 @@ namespace Player {
     class PlayerController : public Collision::ICollider
     {
     private:
-
-        float elapsedShieldDuration;
-        float elapsedRapidFireDuration;
-        float elapsedTripleLaserDuration;
-
-        float elapsedFireDuration;
-        float elapsedFreezeDuration;
-
         PlayerView* playerView;
         PlayerModel* playerModel;
 
@@ -27,9 +19,9 @@ namespace Player {
         void MoveLeft();
         void MoveRight();
 
-        bool ProcessBulletCollision(ICollider* otherCollider);
-        bool ProcessPowerupCollision(ICollider* otherCollider);
-        bool ProcessEnemyCollision(ICollider* otherCollider);
+        void ProcessBulletCollision(ICollider* otherCollider);
+        void ProcessPowerupCollision(ICollider* otherCollider);
+        void ProcessEnemyCollision(ICollider* otherCollider);
 
         void UpdateFreezeDuration();
         void FreezePlayer();
@@ -65,8 +57,8 @@ namespace Player {
         sf::Vector2f GetPlayerPosition() const;
         PlayerState GetPlayerState() const;
         Entity::EntityType GetEntityType() const;
-        const sf::Sprite& GetColliderSprite() override;
 
+        const sf::Sprite& GetColliderSprite() override;
         void OnCollision(ICollider* otherCollider) override;
 
     };

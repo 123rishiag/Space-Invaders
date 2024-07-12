@@ -40,6 +40,7 @@ namespace Player {
     public:
         const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
         const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);
+
         const sf::Vector2f barrelPositionOffset = sf::Vector2f(20.f, -50.f); // we add this offset variable
         const sf::Vector2f secondWeaponPositionOffset = sf::Vector2f(45.f, 0.f);
         const sf::Vector2f thirdWeaponPositionOffset = sf::Vector2f(-45.f, 0.f);

@@ -86,7 +86,6 @@ namespace Bullet
 
 		ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(bulletController));
 
-
 		bulletList.push_back(bulletController);
 		return bulletController;
 	}

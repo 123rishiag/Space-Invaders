@@ -146,7 +146,7 @@
     <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp" />
     <ClCompile Include="Source\Global\Config.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerController.cpp" />
-    <ClCompile Include="Source\Element\Bunker\BunkerModel.cpp" />
+    <ClCompile Include="Source\Element\Bunker\BunkerData.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerView.cpp" />
     <ClCompile Include="Source\Element\ElementService.cpp" />
     <ClCompile Include="Source\Enemy\Controllers\SubZeroController.cpp" />
@@ -201,7 +201,7 @@
     <ClInclude Include="Header\Entity\EntityConfig.h" />
     <ClInclude Include="Header\Global\Config.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerController.h" />
-    <ClInclude Include="Header\Element\Bunker\BunkerModel.h" />
+    <ClInclude Include="Header\Element\Bunker\BunkerData.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerView.h" />
     <ClInclude Include="Header\Element\ElementService.h" />
     <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h" />
