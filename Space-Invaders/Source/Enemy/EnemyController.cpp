@@ -120,7 +120,13 @@ namespace Enemy
 
 	void EnemyController::Destroy()
 	{
-		ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1); //like this
+		ServiceLocator::GetInstance()->GetAnimationService()->SpawnAnimationSystem(enemyModel->GetEnemyPosition(),
+			Animation::AnimationType::EXPLOSION);
+
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::EXPLOSION);
+
+
+		ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1);
 		ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
 	}
 
