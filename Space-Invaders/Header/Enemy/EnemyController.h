@@ -29,7 +29,6 @@ namespace Enemy
         virtual void Move() = 0;
 
         sf::Vector2f GetRandomInitialPosition() const;
-        virtual void Destroy();
 
     public:
         EnemyController(EnemyType type);
@@ -38,6 +37,8 @@ namespace Enemy
         virtual void Initialize();
         void Update();
         void Render();
+
+        virtual void Destroy();
 
         EnemyType GetEnemyType() const;
         EnemyState GetEnemyState() const;

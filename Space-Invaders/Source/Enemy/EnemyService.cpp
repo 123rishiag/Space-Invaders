@@ -113,7 +113,7 @@ namespace Enemy
 		for (int i = 0; i < enemyList.size(); i++)
 		{
 			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(enemyList[i]));
-			delete (enemyList[i]);
+			enemyList[i]->Destroy();
 		}
 		enemyList.clear();
 	}
