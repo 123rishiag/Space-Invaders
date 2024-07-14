@@ -7,6 +7,7 @@ namespace Global
 	{
 	public:
 		static const sf::String outscalLogoTexturePath;
+		static const sf::String loadIconTexturePath;
 		static const sf::String backgroundTexturePath;
 		static const sf::String playerTexturePath;
 
@@ -25,7 +26,7 @@ namespace Global
 		static const sf::String playButtonTexturePath;
 		static const sf::String instructionsButtonTexturePath;
 		static const sf::String quitButtonTexturePath;
-		static const sf::String menu_button_texture_path;
+		static const sf::String menuButtonTexturePath;
 
 		static const sf::String explosionTexturePath;
 

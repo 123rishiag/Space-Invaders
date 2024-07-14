@@ -21,7 +21,7 @@ namespace Animation
         sf::Time frameTime;
 
     public:
-        AnimationSystem(AnimationSystemConfig config);
+        AnimationSystem(const AnimationSystemConfig& config);
         ~AnimationSystem();
 
         void Initialize(sf::Vector2f position);

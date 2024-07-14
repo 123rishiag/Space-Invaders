@@ -12,8 +12,8 @@ namespace Global {
     using namespace Element;
     using namespace Powerup;
     using namespace Collision;
-    using namespace Animation;
     using namespace UI;
+    using namespace Animation;
     using namespace Sound;
     using namespace Main;
 
@@ -29,8 +29,8 @@ namespace Global {
         elementService = nullptr; // Initialize elementService to null
         powerupService = nullptr; // Initialize powerupService to null
         collisionService = nullptr; // Initialize collisionService to null
-        animationService = nullptr; // Initialize animationService to null
         uiService = nullptr; // Initialize uiService to null
+        animationService = nullptr; // Initialize animationService to null
         soundService = nullptr; // Initialize uiService to null
         CreateServices(); // Call CreateServices to instantiate services
     }
@@ -52,8 +52,8 @@ namespace Global {
         elementService = new ElementService(); // Dynamically create a ElementService instance
         powerupService = new PowerupService(); // Dynamically create a PowerupService instance
         collisionService = new CollisionService(); // Dynamically create a CollisionService instance
-        animationService = new AnimationService(); // Dynamically create a AnimationService instance
         uiService = new UIService(); // Dynamically create a UIService instance
+        animationService = new AnimationService(); // Dynamically create a AnimationService instance
         soundService = new SoundService(); // Dynamically create a SoundService instance
     }
 
@@ -69,8 +69,8 @@ namespace Global {
         delete(elementService); // Delete the elementService instance
         delete(powerupService); // Delete the powerupService instance
         delete(collisionService); // Delete the collisionService instance
-        delete(animationService); // Delete the animationService instance
         delete(uiService); // Delete the uiService instance
+        delete(animationService); // Delete the animationService instance
         delete(soundService); // Delete the soundService instance
     }
 
@@ -92,8 +92,8 @@ namespace Global {
         elementService->Initialize(); // Initialize element service
         powerupService->Initialize(); // Initialize powerup service
         collisionService->Initialize(); // Initialize collision service
-        animationService->Initialize(); // Initialize animation service
         uiService->Initialize(); // Initialize ui service
+        animationService->Initialize(); // Initialize animation service
         soundService->Initialize(); // Initialize sound service
     }
 
@@ -111,9 +111,9 @@ namespace Global {
             elementService->Update(); // Update element service
             powerupService->Update(); // Update powerup service
             collisionService->Update(); // Update collision service
-            animationService->Update(); // Update animation service
         }
         uiService->Update(); // Update ui service
+        animationService->Update(); // Update animation service
     }
 
     // Renders using the services.
@@ -130,9 +130,9 @@ namespace Global {
             elementService->Render(); // Render element service
             powerupService->Render(); // Render powerup service
             // No render for collision service
-            animationService->Render(); // Render animation service
         }
         uiService->Render(); // Render ui service
+        animationService->Render(); // Render animation service
     }
 
     // Methods to Get Specific Services:
@@ -177,13 +177,13 @@ namespace Global {
     CollisionService* ServiceLocator::GetCollisionService() const {
         return collisionService;
     }
-    // Retrieve the AnimationService instance
-    AnimationService* ServiceLocator::GetAnimationService() const {
-        return animationService;
-    }
     // Retrieve the UIService instance
     UIService* ServiceLocator::GetUIService() const {
         return uiService;
+    }
+    // Retrieve the AnimationService instance
+    AnimationService* ServiceLocator::GetAnimationService() const {
+        return animationService;
     }
     // Retrieve the SoundService instance
     SoundService* ServiceLocator::GetSoundService() const {

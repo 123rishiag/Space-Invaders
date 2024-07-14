@@ -1,8 +1,10 @@
 #include "../../Header/Global/Config.h"
+#include<iostream>
 
 namespace Global
 {
 	const sf::String Config::outscalLogoTexturePath = "assets/textures/outscal_logo.png";
+	const sf::String Config::loadIconTexturePath = "assets/textures/circle_animation.png";
 	const sf::String Config::backgroundTexturePath = "assets/textures/space_invaders_bg.png";
 	const sf::String Config::playerTexturePath = "assets/textures/player_ship.png";
 
@@ -20,7 +22,7 @@ namespace Global
 	const sf::String Config::playButtonTexturePath = "assets/textures/play_button.png";
 	const sf::String Config::instructionsButtonTexturePath = "assets/textures/instructions_button.png";
 	const sf::String Config::quitButtonTexturePath = "assets/textures/quit_button.png";
-	const sf::String Config::menu_button_texture_path = "assets/textures/menu_button.png";
+	const sf::String Config::menuButtonTexturePath = "assets/textures/menu_button.png";
 
 	const sf::String Config::explosionTexturePath = "assets/textures/explosion.png";
 

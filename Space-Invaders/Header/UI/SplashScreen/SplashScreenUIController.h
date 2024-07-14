@@ -15,6 +15,9 @@ namespace UI
 			const float logoWidth = 600.f;
 			const float logoHeight = 134.f;
 
+			const float loadIconWidth = 100.f;
+			const float loadIconHeight = 100.f;
+
 
 			UIElement::ImageView* backgroundImage;
 			const float backgroundAlpha = 1000.f;
