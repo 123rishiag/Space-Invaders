@@ -7,6 +7,7 @@
 #include "../../header/Bullet/BulletController.h"
 #include "../../header/Enemy/EnemyController.h"
 #include "../../header/Powerup/PowerupController.h"
+#include "../../Header/Sound/SoundService.h"
 #include<iostream>
 // #include<algorithm>
 
@@ -19,6 +20,7 @@ namespace Player {
 	using namespace Entity;
 	using namespace Enemy;
 	using namespace Powerup;
+	using namespace Sound;
 
 	PlayerController::PlayerController()
 	{
@@ -96,34 +98,40 @@ namespace Player {
 
 	void PlayerController::EnableShield()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
 		playerModel->elapsedShieldDuration = playerModel->shieldPowerupDuration;
 		playerModel->SetShieldState(true);
 	}
 
 	void PlayerController::DisableShield()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
 		playerModel->SetShieldState(false);
 	}
 
 	void PlayerController::EnableRapidFire()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
 		playerModel->elapsedRapidFireDuration = playerModel->rapidFirePowerupDuration;
 		playerModel->SetRapidFireState(true);
 	}
 
 	void PlayerController::DisableRapidFire()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
 		playerModel->SetRapidFireState(false);
 	}
 
 	void PlayerController::EnableTripleLaser()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
 		playerModel->elapsedTripleLaserDuration = playerModel->tripleLaserPowerupDuration;
 		playerModel->SetTripleFireState(true);
 	}
 
 	void PlayerController::DisableTripleLaser()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
 		playerModel->SetTripleFireState(false);
 	}
 

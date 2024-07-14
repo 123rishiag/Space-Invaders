@@ -6,6 +6,7 @@
 #include "../../Header/Bullet/Controllers/TorpedoController.h"
 #include "../../Header/Collision/ICollider.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Sound/SoundService.h"
 
 namespace Bullet
 {
@@ -13,6 +14,7 @@ namespace Bullet
 	using namespace Projectile;
 	using namespace Global;
 	using namespace Collision;
+	using namespace Sound;
 
 	BulletService::BulletService() { }
 
@@ -85,6 +87,8 @@ namespace Bullet
 		bulletController->Initialize(position, direction);
 
 		ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(bulletController));
+
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BULLET_FIRE);
 
 		bulletList.push_back(bulletController);
 		return bulletController;
