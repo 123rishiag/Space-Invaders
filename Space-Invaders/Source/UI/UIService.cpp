@@ -3,6 +3,7 @@
 #include "../../Header/UI/UIElement/TextView.h" 
 #include "../../Header/UI/MainMenu/MainMenuUIController.h"
 #include "../../Header/UI/GameplayUI/GameplayUIController.h"
+#include "../../Header/UI/SplashScreen/SplashScreenUIController.h"
 
 namespace UI
 {
@@ -11,11 +12,13 @@ namespace UI
 	using namespace Interface;
 	using namespace MainMenu;
 	using namespace GameplayUI;
+	using namespace SplashScreen;
 
 	UIService::UIService()
 	{
 		mainMenuController = nullptr;
 		gameplayUIController = nullptr;
+		splashScreenUIController = nullptr;
 		CreateControllers();
 	}
 
@@ -23,6 +26,7 @@ namespace UI
 	{
 		mainMenuController = new MainMenu::MainMenuUIController();
 		gameplayUIController = new GameplayUI::GameplayUIController();
+		splashScreenUIController = new SplashScreen::SplashScreenUIController();
 	}
 
 	UIService::~UIService()
@@ -58,12 +62,15 @@ namespace UI
 	{
 		mainMenuController->Initialize();
 		gameplayUIController->Initialize();
+		splashScreenUIController->Initialize();
 	}
 
 	IUIController* UIService::GetCurrentUIController()
 	{
 		switch (GameService::GetGameState())
 		{
+		case GameState::SPLASH_SCREEN:
+			return splashScreenUIController;
 		case GameState::MAIN_MENU:
 			return mainMenuController;
 		case GameState::GAMEPLAY:
@@ -77,5 +84,6 @@ namespace UI
 	{
 		delete(mainMenuController);
 		delete(gameplayUIController);
+		delete(splashScreenUIController);
 	}
 }

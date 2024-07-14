@@ -128,12 +128,6 @@ namespace Global {
         uiService->Render(); // Render ui service
     }
 
-    // Show using the services.
-    void ServiceLocator::Show()
-    {
-        uiService->Show(); // Render ui service
-    }
-
     // Methods to Get Specific Services:
 
     // Retrieve the GraphicService instance
