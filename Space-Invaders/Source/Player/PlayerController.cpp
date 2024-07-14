@@ -8,7 +8,6 @@
 #include "../../header/Enemy/EnemyController.h"
 #include "../../header/Powerup/PowerupController.h"
 #include "../../Header/Sound/SoundService.h"
-#include<iostream>
 // #include<algorithm>
 
 namespace Player {
