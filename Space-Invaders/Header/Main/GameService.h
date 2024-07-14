@@ -8,8 +8,11 @@ namespace Main {
 	enum class GameState //create the enum
 	{
 		BOOT,
+		SPLASH_SCREEN,
 		MAIN_MENU,
+		INSTRUCTIONS,
 		GAMEPLAY,
+		CREDITS,
 	};
 	class GameService
 	{
@@ -22,7 +25,7 @@ namespace Main {
 		void InitializeVariables();// Handles game initialization variables.
 		void Destroy();			// Handles cleanup tasks.
 
-		void ShowMainMenu();
+		void ShowSplashScreen();
 
 	public:
 		GameService();			// Constructor for initializing the GameService object.

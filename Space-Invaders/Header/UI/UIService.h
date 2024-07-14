@@ -13,11 +13,18 @@ namespace UI
 		class GameplayUIController;
 	}
 
+	namespace SplashScreen
+	{
+		class SplashScreenUIController;
+	}
+
+
 	class UIService : public Interface::IUIController
 	{
 	private:
 		MainMenu::MainMenuUIController* mainMenuController;
 		GameplayUI::GameplayUIController* gameplayUIController;
+		SplashScreen::SplashScreenUIController* splashScreenUIController;
 
 		IUIController* GetCurrentUIController();
 

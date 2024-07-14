@@ -1,8 +1,11 @@
 #include "../../Header/Main/GameService.h"
 #include "../../Header/Global/ServiceLocator.h"
 
-namespace Main {
+namespace Main 
+{
+
 	using namespace Global;
+
 	GameState GameService::currentState = GameState::BOOT;
 
 	GameService::GameService()
@@ -16,11 +19,17 @@ namespace Main {
 		Destroy(); // Clean up and release resources
 	}
 
+	void GameService::Ignite()
+	{
+		serviceLocator = ServiceLocator::GetInstance(); // Get ServiceLocator
+		Initialize(); // Initialize services.
+	}
+
 	void GameService::Initialize()
 	{
 		serviceLocator->Initialize();
 		InitializeVariables();
-		ShowMainMenu();
+		ShowSplashScreen();
 	}
 
 	void GameService::InitializeVariables()
@@ -33,15 +42,13 @@ namespace Main {
 		delete(gameWindow);
 	}
 
-	void GameService::Ignite()
-	{
-		serviceLocator = ServiceLocator::GetInstance(); // Get ServiceLocator
-		Initialize(); // Initialize services.
-	}
-
 	void GameService::Update()
 	{
-		serviceLocator->Update(); // Call update on the service locator which then updates all its managed services
+		// Process Events.
+		serviceLocator->GetEventService()->ProcessEvents();
+
+		// Update Game Logic.
+		serviceLocator->Update();
 	}
 
 	void GameService::Render()
@@ -52,10 +59,10 @@ namespace Main {
 		gameWindow->display(); // Display the rendered frame on the game window
 	}
 
-	void GameService::ShowMainMenu()
+	void GameService::ShowSplashScreen()
 	{
-		SetGameState(GameState::MAIN_MENU);
-		serviceLocator->Show();
+		SetGameState(GameState::SPLASH_SCREEN);
+		serviceLocator->GetInstance()->GetUIService()->Show();
 	}
 
 	bool GameService::IsRunning() const
