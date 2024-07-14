@@ -22,6 +22,8 @@ namespace Global
 	const sf::String Config::quitButtonTexturePath = "assets/textures/quit_button.png";
 	const sf::String Config::menu_button_texture_path = "assets/textures/menu_button.png";
 
+	const sf::String Config::explosionTexturePath = "assets/textures/explosion.png";
+
 	const sf::String Config::bubbleBobbleFontPath = "assets/fonts/bubbleBobble.ttf";
 	const sf::String Config::dsDigibFontPath = "assets/fonts/DS_DIGIB.ttf";
 
