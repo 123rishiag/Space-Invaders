@@ -23,7 +23,7 @@ namespace UI
 
         void ImageView::Render()
         {
-            UIView::Update();
+            UIView::Render();
 
             if (uiState == UIState::VISIBLE)
             {
@@ -39,10 +39,20 @@ namespace UI
             }
         }
 
+        void ImageView::SetTextureRect(sf::IntRect textureRect)
+        {
+            imageSprite.setTextureRect(textureRect);
+        }
+
         void ImageView::SetScale(float width, float height)
         {
-            float scaleX = width / imageSprite.getTexture()->getSize().x;
-            float scaleY = height / imageSprite.getTexture()->getSize().y;
+            SetScale(width, height, imageSprite.getTexture()->getSize().x, imageSprite.getTexture()->getSize().y);
+        }
+
+        void ImageView::SetScale(float width, float height, float tileWidth, float tileHeight)
+        {
+            float scaleX = width / tileWidth;
+            float scaleY = height / tileHeight;
 
             imageSprite.setScale(scaleX, scaleY);
         }
