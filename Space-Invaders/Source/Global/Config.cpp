@@ -29,4 +29,5 @@ namespace Global
 
 	const sf::String Config::backgroundMusicPath = "assets/sounds/background_music.mp3";
 	const sf::String Config::buttonClickSoundPath = "assets/sounds/button_click_sound.wav";
+	const sf::String Config::explosionSoundPath = "assets/sounds/explosion.wav";
 }
