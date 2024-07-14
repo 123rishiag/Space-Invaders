@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Header/UI/Interface/IUIController.h"
 #include "../../Header/UI/UIElement/AnimatedImageView.h"
+#include "../../Header/UI/UIElement/ImageView.h"
 
 namespace UI
 {
@@ -14,9 +15,14 @@ namespace UI
 			const float logoWidth = 600.f;
 			const float logoHeight = 134.f;
 
+
+			UIElement::ImageView* backgroundImage;
+			const float backgroundAlpha = 1000.f;
+
 			UIElement::AnimatedImageView* outscalLogoView;
 
 			void InitializeOutscalLogo();
+			void InitializeBackgroundImage();
 			void FadeInAnimationCallback();
 			void FadeOutAnimationCallback();
 			sf::Vector2f GetLogoPosition();
