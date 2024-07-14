@@ -10,8 +10,8 @@
 #include "../Element/ElementService.h"
 #include "../Powerup/PowerupService.h"
 #include "../Collision/CollisionService.h"
-#include "../AnimationSystem/AnimationService.h"
 #include "../UI/UIService.h"
+#include "../AnimationSystem/AnimationService.h"
 #include "../Sound/SoundService.h"
 
 namespace Global {
@@ -32,8 +32,8 @@ namespace Global {
         Element::ElementService* elementService;
         Powerup::PowerupService* powerupService;
         Collision::CollisionService* collisionService;
-        Animation::AnimationService* animationService;
         UI::UIService* uiService;
+        Animation::AnimationService* animationService;
         Sound::SoundService* soundService;
         // ..........................
         // ..........................
@@ -70,8 +70,8 @@ namespace Global {
         Element::ElementService* GetElementService() const;   // Retrieve the ElementService instance
         Powerup::PowerupService* GetPowerupService() const;   // Retrieve the PowerupService instance
         Collision::CollisionService* GetCollisionService() const;   // Retrieve the CollisionService instance
-        Animation::AnimationService* GetAnimationService() const;   // Retrieve the AnimationService instance
         UI::UIService* GetUIService() const;   // Retrieve the UIService instance
+        Animation::AnimationService* GetAnimationService() const;   // Retrieve the AnimationService instance
         Sound::SoundService* GetSoundService() const;   // Retrieve the SoundService instance
 
         void DeleteServiceLocator();

@@ -56,6 +56,7 @@ namespace UI
             sf::RenderWindow* gameWindow = ServiceLocator::GetInstance()->GetGraphicService()->GetGameWindow();
             backgroundImage->Initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
             backgroundImage->SetImageAlpha(backgroundAlpha);
+            ServiceLocator::GetInstance()->GetAnimationService()->SpawnAnimationSystem(sf::Vector2f(gameWindow->getSize().x - loadIconWidth, gameWindow->getSize().y - loadIconHeight), Animation::AnimationType::LOAD);
         }
 
         void SplashScreenUIController::InitializeOutscalLogo()

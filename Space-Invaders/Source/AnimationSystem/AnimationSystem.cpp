@@ -1,5 +1,4 @@
 #include "../../Header/AnimationSystem/AnimationSystem.h"
-#include "../../Header/Global/Config.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/AnimationSystem/AnimationService.h"
 
@@ -8,7 +7,7 @@ namespace Animation
 	using namespace Global;
 	using namespace UI::UIElement;
 
-	AnimationSystem::AnimationSystem(AnimationSystemConfig config)
+	AnimationSystem::AnimationSystem(const AnimationSystemConfig& config)
 	{
 		animationSystemConfig = config;
 		CreateUIElements();
@@ -35,7 +34,7 @@ namespace Animation
 
 	void AnimationSystem::InitializeImage()
 	{
-		animationImage->Initialize(Config::explosionTexturePath, 0, 0, animationPosition);
+		animationImage->Initialize(animationSystemConfig.animationTexturePath, 0, 0, animationPosition);
 		animationImage->SetTextureRect(sf::IntRect(0, 0, animationSystemConfig.tileWidth, animationSystemConfig.tileHeight));
 
 		animationImage->SetScale(animationSystemConfig.spriteSheetWidth, animationSystemConfig.spriteSheetHeight, animationSystemConfig.tileWidth, animationSystemConfig.tileHeight);

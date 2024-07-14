@@ -1,5 +1,6 @@
 #include "../../Header/AnimationSystem/AnimationService.h"
-#include "../../Header/AnimationSystem/AnimationSystemConfigData.h"
+#include "../../Header/AnimationSystem/AnimationSystemConfig.h"
+#include "../../Header/Global/Config.h"
 
 namespace Animation
 {
@@ -41,7 +42,9 @@ namespace Animation
 		switch (animationType)
 		{
 		case Animation::AnimationType::EXPLOSION:
-			return explosionAnimationConfig;
+			return AnimationSystemConfig(Global::Config::explosionTexturePath, 70.0f, 80.0f, 14.28f, 20.0f, 7, 0.03f);
+		case Animation::AnimationType::LOAD:
+			return AnimationSystemConfig(Global::Config::loadIconTexturePath, 70.0f, 80.0f, 14.28f, 20.0f, 12, 0.03f);
 		}
 	}
 

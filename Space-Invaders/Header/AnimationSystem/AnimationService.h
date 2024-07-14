@@ -8,6 +8,7 @@ namespace Animation
 	enum class AnimationType
 	{
 		EXPLOSION,
+		LOAD,
 	};
 
 	class AnimationService
