@@ -1,5 +1,4 @@
 #include "../../Header/Global/Config.h"
-#include<iostream>
 
 namespace Global
 {
