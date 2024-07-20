@@ -186,6 +186,9 @@
     <ClCompile Include="Source\AnimationSystem\AnimationSystemConfig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\UI\MainMenu\InstructionUIController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -372,6 +375,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\AnimationSystem\AnimationService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\MainMenu\InstructionUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

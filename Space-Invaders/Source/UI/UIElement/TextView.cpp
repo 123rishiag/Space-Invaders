@@ -9,6 +9,7 @@ namespace UI
 
 		sf::Font TextView::fontBubbleBobble;
 		sf::Font TextView::fontDsDigib;
+		sf::Font TextView::fontOpenSans;
 
 		TextView::TextView() = default;
 
@@ -49,6 +50,7 @@ namespace UI
 		{
 			fontBubbleBobble.loadFromFile(Config::bubbleBobbleFontPath);
 			fontDsDigib.loadFromFile(Config::dsDigibFontPath);
+			fontOpenSans.loadFromFile(Config::openSansFontPath);
 		}
 
 		void TextView::SetText(sf::String textValue)
@@ -65,6 +67,9 @@ namespace UI
 				break;
 			case FontType::DS_DIGIB:
 				text.setFont(fontDsDigib);
+				break;
+			case FontType::OPEN_SANS:
+				text.setFont(fontOpenSans);
 				break;
 			}
 		}
@@ -90,6 +95,11 @@ namespace UI
 			float yPosition = text.getGlobalBounds().getPosition().y;
 
 			text.setPosition(sf::Vector2f(xPosition, yPosition));
+		}
+
+		void TextView::UnderlineText()
+		{
+			text.setStyle(sf::Text::Underlined);
 		}
 	}
 }
