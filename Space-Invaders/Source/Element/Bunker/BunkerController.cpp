@@ -4,6 +4,7 @@
 #include "../../../Header/Entity/EntityConfig.h"
 #include "../../../Header/Global/ServiceLocator.h"
 #include "../../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Sound/SoundService.h"
 
 namespace Element
 {
@@ -12,6 +13,7 @@ namespace Element
 		using namespace Bullet;
 		using namespace Entity;
 		using namespace Global;
+		using namespace Sound;
 
 		BunkerController::BunkerController()
 		{
@@ -56,6 +58,10 @@ namespace Element
 			if (bulletController && bulletController->GetBulletType() == BulletType::TORPEDO)
 			{
 				ServiceLocator::GetInstance()->GetElementService()->DestroyBunker(this);
+
+				ServiceLocator::GetInstance()->GetAnimationService()->SpawnAnimationSystem(GetBunkerPosition(),
+					Animation::AnimationType::EXPLOSION);
+				ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::EXPLOSION);
 			}
 		}
 	}

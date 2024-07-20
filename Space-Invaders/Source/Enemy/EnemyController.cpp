@@ -122,7 +122,6 @@ namespace Enemy
 	{
 		ServiceLocator::GetInstance()->GetAnimationService()->SpawnAnimationSystem(enemyModel->GetEnemyPosition(),
 			Animation::AnimationType::EXPLOSION);
-
 		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::EXPLOSION);
 
 		ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1);
