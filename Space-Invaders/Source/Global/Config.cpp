@@ -27,6 +27,7 @@ namespace Global
 
 	const sf::String Config::bubbleBobbleFontPath = "assets/fonts/bubbleBobble.ttf";
 	const sf::String Config::dsDigibFontPath = "assets/fonts/DS_DIGIB.ttf";
+	const sf::String Config::openSansFontPath = "assets/fonts/OpenSans.ttf";
 
 	const sf::String Config::backgroundMusicPath = "assets/sounds/background_music.mp3";
 	const sf::String Config::buttonClickSoundPath = "assets/sounds/button_click_sound.wav";

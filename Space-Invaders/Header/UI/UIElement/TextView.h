@@ -9,6 +9,7 @@ namespace UI
 		{
 			BUBBLE_BOBBLE,
 			DS_DIGIB,
+			OPEN_SANS,
 		};
 
 		class TextView : public UIView
@@ -18,6 +19,7 @@ namespace UI
 
 			static sf::Font fontBubbleBobble;
 			static sf::Font fontDsDigib;
+			static sf::Font fontOpenSans;
 
 			sf::Text text;
 
@@ -40,6 +42,7 @@ namespace UI
 
 			void SetText(sf::String textValue);
 			void SetTextCentreAligned();
+			void UnderlineText();
 		};
 	}
 }

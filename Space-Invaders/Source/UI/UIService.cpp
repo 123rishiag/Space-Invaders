@@ -2,6 +2,7 @@
 #include "../../Header/Main/GameService.h"
 #include "../../Header/UI/UIElement/TextView.h" 
 #include "../../Header/UI/MainMenu/MainMenuUIController.h"
+#include "../../Header/UI/MainMenu/InstructionUIController.h"
 #include "../../Header/UI/GameplayUI/GameplayUIController.h"
 #include "../../Header/UI/SplashScreen/SplashScreenUIController.h"
 
@@ -17,6 +18,7 @@ namespace UI
 	UIService::UIService()
 	{
 		mainMenuController = nullptr;
+		instructionController = nullptr;
 		gameplayUIController = nullptr;
 		splashScreenUIController = nullptr;
 		CreateControllers();
@@ -25,6 +27,7 @@ namespace UI
 	void UIService::CreateControllers()
 	{
 		mainMenuController = new MainMenu::MainMenuUIController();
+		instructionController = new MainMenu::InstructionUIController();
 		gameplayUIController = new GameplayUI::GameplayUIController();
 		splashScreenUIController = new SplashScreen::SplashScreenUIController();
 	}
@@ -61,6 +64,7 @@ namespace UI
 	void UIService::InitializeControllers()
 	{
 		mainMenuController->Initialize();
+		instructionController->Initialize();
 		gameplayUIController->Initialize();
 		splashScreenUIController->Initialize();
 	}
@@ -73,6 +77,8 @@ namespace UI
 			return splashScreenUIController;
 		case GameState::MAIN_MENU:
 			return mainMenuController;
+		case GameState::INSTRUCTIONS:
+			return instructionController;
 		case GameState::GAMEPLAY:
 			return gameplayUIController;
 		default:
@@ -83,6 +89,7 @@ namespace UI
 	void UIService::Destroy()
 	{
 		delete(mainMenuController);
+		delete(instructionController);
 		delete(gameplayUIController);
 		delete(splashScreenUIController);
 	}
