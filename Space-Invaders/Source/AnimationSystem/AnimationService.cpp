@@ -44,7 +44,7 @@ namespace Animation
 		case Animation::AnimationType::EXPLOSION:
 			return AnimationSystemConfig(Global::Config::explosionTexturePath, 70.0f, 80.0f, 14.28f, 20.0f, 7, 0.03f);
 		case Animation::AnimationType::LOAD:
-			return AnimationSystemConfig(Global::Config::loadIconTexturePath, 70.0f, 80.0f, 14.28f, 20.0f, 12, 0.03f);
+			return AnimationSystemConfig(Global::Config::loadIconTexturePath, 70.0f, 80.0f, 14.28f, 15.5f, 12, 0.03f);
 		}
 	}
 
