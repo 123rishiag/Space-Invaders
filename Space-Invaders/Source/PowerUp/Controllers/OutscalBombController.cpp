@@ -13,7 +13,7 @@ namespace Powerup
 
         void OutscalBombController::ApplyPowerup()
         {
-            ServiceLocator::GetInstance()->GetEnemyService()->Reset();
+            ServiceLocator::GetInstance()->GetEnemyService()->Reset(true);
         }
     }
 }
