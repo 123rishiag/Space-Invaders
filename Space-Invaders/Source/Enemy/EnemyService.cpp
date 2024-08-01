@@ -20,7 +20,7 @@ namespace Enemy
 		std::srand(static_cast<unsigned>(std::time(nullptr)));
 	}
 
-	EnemyService::~EnemyService() { Destroy(); }
+	EnemyService::~EnemyService() { Destroy(true); }
 
 	void EnemyService::Initialize()
 	{
@@ -108,19 +108,22 @@ namespace Enemy
 		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), enemyController), enemyList.end());
 	}
 
-	void EnemyService::Destroy()
+	void EnemyService::Destroy(bool increaseScore)
 	{
 		for (int i = 0; i < enemyList.size(); i++)
 		{
 			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(enemyList[i]));
 			enemyList[i]->Destroy();
+			if (increaseScore == true) {
+				ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1);
+			}
 		}
 		enemyList.clear();
 	}
 
-	void EnemyService::Reset()
+	void EnemyService::Reset(bool increaseScore)
 	{
-		Destroy();
+		Destroy(increaseScore);
 		spawnTimer = 0.0f;
 	}
 }

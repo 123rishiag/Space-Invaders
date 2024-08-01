@@ -76,7 +76,6 @@ namespace Bullet
 			if (!IsValidBullet(i, bulletList)) continue;
 
 			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(bulletList[i]));
-			delete (bulletList[i]);
 		}
 		bulletList.clear();
 	}

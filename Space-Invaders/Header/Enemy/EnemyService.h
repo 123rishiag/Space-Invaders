@@ -20,7 +20,7 @@ namespace Enemy
 		EnemyType GetRandomEnemyType() const;
 		EnemyController* CreateEnemy(EnemyType enemyType) const;
 		void DestroyFlaggedEnemies();
-		void Destroy(); // function to delete enemy
+		void Destroy(bool increaseScore); // function to delete enemy
 
 	public:
 		EnemyService();
@@ -30,7 +30,7 @@ namespace Enemy
 		void Update();
 		void Render();
 
-		void Reset();
+		void Reset(bool increaseScore);
 
 		EnemyController* SpawnEnemy();
 		void DestroyEnemy(EnemyController* enemyController);

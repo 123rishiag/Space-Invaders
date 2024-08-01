@@ -118,6 +118,7 @@ namespace Bullet
 
         if (enemyController && GetEntityType() != EntityType::ENEMY)
         {
+            ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1);
             ServiceLocator::GetInstance()->GetBulletService()->DestroyBullet(this);
         }
     }
