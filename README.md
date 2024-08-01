@@ -73,7 +73,6 @@ Welcome to the modern twist on the classic Space Invaders game! This project is 
 1. Clone the repository:
     ```bash
     git clone https://github.com/123rishiag/Space-Invaders.git
-    cd space-invaders
     ```
 
 2. Build the project using your preferred C++ compiler.
